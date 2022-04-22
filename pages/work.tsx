@@ -19,11 +19,11 @@ const Home: NextPage = () => {
           <h2 className="text-3xl font-bold">Skills</h2>
           <p className="text-lg">JavaScript, TypeScript, CSS, Semantic HTML</p>
           <p className="text-lg">
-            React, CSS frameworks (CSS modules, tailwindcss, vanilla-extract,
-            Styled Components), GraphQL (via Apollo), REST (via fetch)
+            React, Next.js, CSS frameworks (CSS modules, tailwindcss,
+            vanilla-extract, Styled Components, SCSS), GraphQL, REST
           </p>
           <p className="text-lg">
-            Rollup, Gulp, Webpack (mostly through Create React App), custom
+            Rollup, Webpack (mostly through Create React App), Gulp, custom
             Node.js build scripts
           </p>
           <p className="text-lg">Git, GitHub, VSCode</p>
@@ -33,7 +33,8 @@ const Home: NextPage = () => {
           <h2 className="text-3xl font-bold">Experience</h2>
           <section>
             <h3 className="text-xl font-bold">
-              Staff Engineer, Schedule Engine / HomeX; Remote — 1/2018–Present
+              Staff Engineer, Schedule Engine / HomeX; Remote —
+              1/2018&#8209;11/2021
             </h3>
             <ul className="text-base" role="list">
               <li>
@@ -85,7 +86,8 @@ const Home: NextPage = () => {
           </section>
           <section>
             <h3 className="text-xl font-bold">
-              Front End Lead (Contractor), BankMobile; Remote — 5/2017–12/2017
+              Front End Lead (Contractor), BankMobile; Remote —
+              5/2017&#8209;12/2017
             </h3>
             <ul className="text-base" role="list">
               <li>
@@ -104,7 +106,7 @@ const Home: NextPage = () => {
           </section>
           <section>
             <h3 className="text-xl font-bold">
-              UI Engineer, Apple, iTunes; Cupertino, CA — 1/2016–5/2017
+              UI Engineer, Apple, iTunes; Cupertino, CA — 1/2016&#8209;5/2017
             </h3>
             <ul className="text-base" role="list">
               <li>
@@ -112,7 +114,7 @@ const Home: NextPage = () => {
                 server
               </li>
               <li>
-                Build and maintain apps for tvOS (What’s New, Subscription
+                Build and maintain apps for tvOS (What&apos;s New, Subscription
                 Management, and others).
               </li>
               <li>
@@ -133,7 +135,7 @@ const Home: NextPage = () => {
           <section>
             <h3 className="text-xl font-bold">
               Front End Web Developer, Apple, Online Store; Cupertino, CA —
-              8/2014–1/2016
+              8/2014&#8209;1/2016
             </h3>
             <ul className="text-base" role="list">
               <li>
@@ -144,7 +146,7 @@ const Home: NextPage = () => {
                 Anticipate and provide solutions for localization and
                 accessibility issues.
               </li>
-              <li>Migrate team&rsquo;s Sass build from Compass to Gulp. </li>
+              <li>Migrate team&rsquo;s Sass build from Compass to Gulp.</li>
               <li>
                 Write and maintain custom Gulp module to compile Apple Store App
                 style sheets using Sass, greatly improving team performance, and
