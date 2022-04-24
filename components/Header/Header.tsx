@@ -20,7 +20,7 @@ export const Header = () => {
   const router = useRouter();
 
   return (
-    <header className="flex flex-col gap-2 lg:gap-4">
+    <header className="flex flex-col gap-2 lg:gap-4 dark:text-white">
       <h1 className="text-5xl lg:text-7xl font-bold">Adam Drago</h1>
       <nav>
         <ul className="flex gap-4 lg:gap-8">

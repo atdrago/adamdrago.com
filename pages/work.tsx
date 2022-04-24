@@ -5,7 +5,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex flex-col gap-2">
       <Header />
-      <main className="prose lg:prose-xl">
+      <main className="prose lg:prose-xl dark:prose-invert">
         <section>
           <h2 className="text-3xl font-bold">Profile</h2>
           <p className="text-lg">

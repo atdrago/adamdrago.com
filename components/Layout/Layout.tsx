@@ -2,6 +2,7 @@ import type { PropsWithChildren } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import cherryTreeImage from "public/static/cherry-tree.png";
+import cherryTreeDarkImage from "public/static/cherry-tree-dark.png";
 import coffeeMugImage from "public/static/coffee-mug.png";
 
 interface LayoutProps {
@@ -27,7 +28,23 @@ export const Layout = ({ children, page }: PropsWithChildren<LayoutProps>) => {
       >
         <div
           className={
-            "absolute -z-10 w-[714px] h-[760px] -right-[400px] sm:-right-[200px] lg:-right-[250px] xl:-right-[150px] 2xl:-right-0"
+            "absolute -z-10 w-[714px] h-[760px] -right-[400px] sm:-right-[200px] lg:-right-[250px] xl:-right-[150px] 2xl:-right-0 dark:hidden"
+          }
+        >
+          <Image
+            alt=""
+            className=""
+            layout="fixed"
+            aria-hidden={true}
+            width={714}
+            height={760}
+            src={cherryTreeImage}
+            placeholder="blur"
+          />
+        </div>
+        <div
+          className={
+            "absolute -z-10 w-[714px] h-[760px] -right-[400px] sm:-right-[200px] lg:-right-[250px] xl:-right-[150px] 2xl:-right-0 hidden dark:block"
           }
         >
           <Image
@@ -36,7 +53,7 @@ export const Layout = ({ children, page }: PropsWithChildren<LayoutProps>) => {
             aria-hidden={true}
             width={714}
             height={760}
-            src={cherryTreeImage}
+            src={cherryTreeDarkImage}
             placeholder="blur"
           />
         </div>
@@ -48,7 +65,7 @@ export const Layout = ({ children, page }: PropsWithChildren<LayoutProps>) => {
       >
         <div
           className={
-            "absolute -z-10 w-[1698px] h-[1084px] -right-[1200px] sm:-right-[1100px] xl:-right-[700px]"
+            "absolute -z-10 w-[1698px] h-[1084px] -right-[1200px] sm:-right-[1100px] xl:-right-[700px] dark:hidden"
           }
         >
           <Image
