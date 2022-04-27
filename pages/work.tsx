@@ -1,12 +1,16 @@
 import { Header } from "components/Header";
 
 export default function WorkPage() {
+  const h2ClassName =
+    "text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10";
+  const h3ClassName = "text-xl font-bold sticky top-9 bg-white dark:bg-black";
+
   return (
     <div className="flex flex-col gap-2">
       <Header />
       <main className="prose lg:prose-xl dark:prose-invert">
         <section>
-          <h2 className="text-3xl font-bold">Profile</h2>
+          <h2 className={h2ClassName}>Profile</h2>
           <p className="text-lg">
             Front end engineer with a passion for building beautiful user
             interfaces and exceptional user experiences while adhering to
@@ -15,7 +19,7 @@ export default function WorkPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-3xl font-bold">Skills</h2>
+          <h2 className={h2ClassName}>Skills</h2>
           <p className="text-lg">JavaScript, TypeScript, CSS, Semantic HTML</p>
           <p className="text-lg">
             React, Next.js, CSS frameworks (CSS modules, tailwindcss,
@@ -29,9 +33,9 @@ export default function WorkPage() {
         </section>
 
         <section>
-          <h2 className="text-3xl font-bold">Experience</h2>
+          <h2 className={h2ClassName}>Experience</h2>
           <section>
-            <h3 className="text-xl font-bold">
+            <h3 className={h3ClassName}>
               Staff Engineer, Schedule Engine / HomeX; Remote —
               1/2018&#8209;11/2021
             </h3>
@@ -84,7 +88,7 @@ export default function WorkPage() {
             </ul>
           </section>
           <section>
-            <h3 className="text-xl font-bold">
+            <h3 className={h3ClassName}>
               Front End Lead (Contractor), BankMobile; Remote —
               5/2017&#8209;12/2017
             </h3>
@@ -104,7 +108,7 @@ export default function WorkPage() {
             </ul>
           </section>
           <section>
-            <h3 className="text-xl font-bold">
+            <h3 className={h3ClassName}>
               UI Engineer, Apple, iTunes; Cupertino, CA — 1/2016&#8209;5/2017
             </h3>
             <ul className="text-base" role="list">
@@ -132,7 +136,7 @@ export default function WorkPage() {
             </ul>
           </section>
           <section>
-            <h3 className="text-xl font-bold">
+            <h3 className={h3ClassName}>
               Front End Web Developer, Apple, Online Store; Cupertino, CA —
               8/2014&#8209;1/2016
             </h3>
@@ -155,7 +159,7 @@ export default function WorkPage() {
             </ul>
           </section>
           <section>
-            <h2 className="text-3xl font-bold">Education</h2>
+            <h2 className={h2ClassName}>Education</h2>
             <p className="text-lg">
               Millersville University, Millersville, PA — B.S., Computer
               Science, 2010
