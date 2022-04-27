@@ -2,6 +2,7 @@ import "styles/globals.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { Layout } from "components/Layout";
+import { ColorSchemeProvider } from "contexts/ColorSchemeContext";
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -18,9 +19,11 @@ function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Layout page={page}>
-      <Component {...pageProps} />
-    </Layout>
+    <ColorSchemeProvider>
+      <Layout page={page}>
+        <Component {...pageProps} />
+      </Layout>
+    </ColorSchemeProvider>
   );
 }
 

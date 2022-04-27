@@ -1,7 +1,6 @@
-import type { NextPage } from "next";
 import { Header } from "components/Header";
 
-const Home: NextPage = () => {
+export default function WorkPage() {
   return (
     <div className="flex flex-col gap-2">
       <Header />
@@ -166,6 +165,4 @@ const Home: NextPage = () => {
       </main>
     </div>
   );
-};
-
-export default Home;
+}
