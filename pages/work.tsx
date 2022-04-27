@@ -2,8 +2,9 @@ import { Header } from "components/Header";
 
 export default function WorkPage() {
   const h2ClassName =
-    "text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10";
-  const h3ClassName = "text-xl font-bold sticky top-9 bg-white dark:bg-black";
+    "text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors";
+  const h3ClassName =
+    "text-xl font-bold sticky top-9 bg-white dark:bg-black transition-colors";
 
   return (
     <div className="flex flex-col gap-2">
