@@ -28,10 +28,10 @@ export const Header = () => {
   } = useColorSchemeContext();
 
   return (
-    <header className="flex flex-col gap-2 lg:gap-4 text-black dark:text-white transition-colors">
+    <header className="flex flex-col gap-3 lg:gap-4 text-black dark:text-white transition-colors">
       <SelectField
         className="absolute top-0 left-0 w-min leading-none"
-        aria-label={`${computedColorScheme} theme`}
+        aria-label={`${computedColorScheme} color scheme`}
         label={computedColorSchemeIcon}
         value={colorScheme}
         onChange={(event) => {
