@@ -20,11 +20,15 @@ export default function WorkPage() {
           </p>
         </section>
         <section>
-          <h2 className={h2ClassName}>Skills</h2>
-          <p className="text-lg">JavaScript, TypeScript, CSS, Semantic HTML</p>
+          <h2 className={h2ClassName}>Skills and tools</h2>
           <p className="text-lg">
-            React, Next.js, CSS frameworks (CSS modules, tailwindcss,
-            vanilla-extract, Styled Components, SCSS), GraphQL, REST
+            JavaScript, TypeScript, CSS, Semantic and Accessible HTML, REST,
+            GraphQL
+          </p>
+          <p className="text-lg">
+            React, Next.js, React Query, Apollo, and CSS frameworks like
+            vanilla-extract, tailwindcss, CSS Modules, Styled Components, and
+            SCSS
           </p>
           <p className="text-lg">
             Rollup, Webpack (mostly through Create React App), Gulp, custom
