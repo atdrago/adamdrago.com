@@ -20,13 +20,18 @@ const routes = [
 
 export const Header = () => {
   const router = useRouter();
-  const { colorScheme, computedColorSchemeIcon, setColorScheme } =
-    useColorSchemeContext();
+  const {
+    colorScheme,
+    computedColorSchemeIcon,
+    computedColorScheme,
+    setColorScheme,
+  } = useColorSchemeContext();
 
   return (
     <header className="flex flex-col gap-2 lg:gap-4 text-black dark:text-white transition-colors">
       <SelectField
         className="absolute top-0 left-0 w-min leading-none"
+        aria-label={`${computedColorScheme} theme`}
         label={computedColorSchemeIcon}
         value={colorScheme}
         onChange={(event) => {

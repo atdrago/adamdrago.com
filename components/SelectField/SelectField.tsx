@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
+
 type SelectFieldProps = JSX.IntrinsicElements["select"] & {
-  label?: string;
+  label?: ReactNode;
 };
 
 export const SelectField = ({

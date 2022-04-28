@@ -1,10 +1,8 @@
 import type { PropsWithChildren } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import cherryTreeImage from "public/static/cherry-tree.jpg";
 import cherryTreeDarkImage from "public/static/cherry-tree-dark.jpg";
 import coffeeMugImage from "public/static/coffee-mug.png";
-import { SelectField } from "components/SelectField";
 import { useColorSchemeContext } from "contexts/ColorSchemeContext";
 import { BackgroundImage } from "components/BackgroundImage";
 
@@ -13,12 +11,7 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children, page }: PropsWithChildren<LayoutProps>) => {
-  const {
-    colorScheme,
-    computedColorScheme,
-    computedColorSchemeIcon,
-    setColorScheme,
-  } = useColorSchemeContext();
+  const { computedColorScheme } = useColorSchemeContext();
 
   return (
     <>
