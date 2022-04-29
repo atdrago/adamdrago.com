@@ -13,9 +13,9 @@ export default function WorkPage() {
         <section>
           <h2 className={h2ClassName}>Profile</h2>
           <p className="text-lg">
-            Front end engineer with a passion for building beautiful user
+            Front-end engineer with a passion for building beautiful user
             interfaces and exceptional user experiences while adhering to
-            established best practices and standards, and writing
+            established best practices and industry standards and writing
             self-documenting, clean, and reusable code.
           </p>
         </section>
@@ -36,7 +36,6 @@ export default function WorkPage() {
           </p>
           <p className="text-lg">Git, GitHub, VSCode</p>
         </section>
-
         <section>
           <h2 className={h2ClassName}>Experience</h2>
           <section>
