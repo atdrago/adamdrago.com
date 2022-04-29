@@ -24,13 +24,13 @@ export const BackgroundImage = ({
 }: BackgroundImageProps) => {
   return (
     <div
-      className={`absolute w-full overflow-hidden pointer-events-none ${
+      className={`absolute w-full overflow-hidden pointer-events-none -z-10 ${
         isVisible ? "transition-in" : "transition-out"
       } ${outerClassName}`}
       style={{ height }}
     >
       <div
-        className={`absolute -z-10 top-0 ${innerClassName}`}
+        className={`absolute top-0 ${innerClassName}`}
         style={{ height, width }}
       >
         <Image
