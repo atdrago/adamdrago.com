@@ -5,11 +5,19 @@ export default function WorkPage() {
     "text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors";
   const h3ClassName =
     "text-xl font-bold sticky top-9 bg-white dark:bg-black transition-colors";
+  const updatedAt = Intl.DateTimeFormat([], { dateStyle: "full" })
+    .format(new Date("4/29/22"))
+    .toString();
 
   return (
     <div className="flex flex-col gap-2">
       <Header />
       <main className="prose lg:prose-xl dark:prose-invert">
+        <aside>
+          <p className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 px-3 py-2 text-lg transition-colors">
+            The following is my resumé, updated as of <b>{updatedAt}</b>.
+          </p>
+        </aside>
         <section>
           <h2 className={h2ClassName}>Profile</h2>
           <p className="text-lg">
