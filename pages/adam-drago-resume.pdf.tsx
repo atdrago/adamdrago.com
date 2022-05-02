@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   await browser.close();
 
-  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader("Content-Type", "application/pdf; charset=utf-8");
   res.setHeader(
     "Content-Disposition",
     `attachment; filename="adam-drago-resume.pdf"`
