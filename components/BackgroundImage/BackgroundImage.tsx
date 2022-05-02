@@ -24,7 +24,7 @@ export const BackgroundImage = ({
 }: BackgroundImageProps) => {
   return (
     <div
-      className={`absolute w-full overflow-hidden pointer-events-none -z-10 ${
+      className={`absolute w-full overflow-hidden pointer-events-none -z-10 print:hidden ${
         isVisible ? "transition-in" : "transition-out"
       } ${outerClassName}`}
       style={{ height }}

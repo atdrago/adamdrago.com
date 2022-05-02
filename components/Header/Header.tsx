@@ -30,7 +30,7 @@ export const Header = () => {
   return (
     <header className="flex flex-col gap-3 lg:gap-4 text-black dark:text-neutral-100 transition-colors">
       <SelectField
-        className="absolute top-0 left-0 w-min leading-none"
+        className="absolute top-0 left-0 w-min leading-none print:hidden"
         aria-label={`${computedColorScheme} color scheme`}
         label={computedColorSchemeIcon}
         value={colorScheme}
@@ -43,7 +43,7 @@ export const Header = () => {
         <option value="system">system</option>
       </SelectField>
       <h1 className="text-5xl lg:text-7xl font-bold">Adam Drago</h1>
-      <nav>
+      <nav className="print:hidden">
         <ul className="flex gap-4 lg:gap-8">
           {routes.map(({ name, href }) => (
             <li key={href}>

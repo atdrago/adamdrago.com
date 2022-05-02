@@ -6,29 +6,40 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Testing PDF Downloads
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The resume PDF download runs the /work page in a headless version of Chromium using Puppeteer. This setup can require some extra configuration (beyond the usual `npm install`) when running on certain systems.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### M1 Apple Architecture
 
-## Learn More
+```
+Error: spawn Unknown system error -86
+```
 
-To learn more about Next.js, take a look at the following resources:
+We need to install the M1 version of chromium, so we can do that through `brew`, and then update Puppeteer globals to point to that installation path:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Steps:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Open a terminal and run:
+   ```
+   brew install chromium --no-quarantine
+   `which chromium`
+   ```
+2. Chromium should open. If there is a security warning (I didn't get one), go to `System Preferences` > `Security & Privacy` > `General` and click "Open anyway".
+3. Quit Chromium.app
+4. To `~/.zshrc` add:
+   ```
+   export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+   export PUPPETEER_EXECUTABLE_PATH=`which chromium`
+   ```
+5. Restart the terminal
 
-## Deploy on Vercel
+**Notes:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `86` is the "unknown arch" error ([source](https://github.com/pa11y/pa11y/issues/619#issuecomment-986182745))
+- You need to manually install `chromium` and then run it to verify that it opens ([source](https://github.com/puppeteer/puppeteer/issues/6622#issuecomment-787912758))
+- If you get an error that Chromium is damaged, you should reinstall chromium using `--no-quarantine` ([source](https://www.reddit.com/r/MacOS/comments/q9d772/homebrew_chromium_is_damaged_and_cant_be_openend/hkh5sxm/?utm_source=reddit&utm_medium=web2x&context=3))

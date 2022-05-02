@@ -1,4 +1,4 @@
-import type { NextApiHandler, GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import resume from "data/resume";
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
@@ -47,6 +47,6 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   };
 };
 
-export default function Resume(): null {
+export default function ResumeTxt(): null {
   return null;
 }
