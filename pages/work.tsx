@@ -78,7 +78,7 @@ export default function WorkPage() {
             </Link>
             <Link href="/adam-drago-resume.pdf">
               <a
-                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline"
+                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline hidden"
                 download={true}
               >
                 <span className="text-xl">⇣</span> PDF file
