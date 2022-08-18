@@ -17,7 +17,7 @@
     "react-polymorphic-box": "^3.0.3"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
     "@types/node": "17.0.23",
     "@types/react": "18.0.0",
