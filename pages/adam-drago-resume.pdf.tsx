@@ -1,12 +1,15 @@
 import type { GetServerSideProps } from "next";
 import chromium from "chrome-aws-lambda";
+import puppeteer from "puppeteer";
 
-const getBrowserInstance: typeof chromium.puppeteer.launch = async () => {
+const getBrowserInstance = async (): Promise<
+  Awaited<
+    ReturnType<typeof chromium.puppeteer.launch | typeof puppeteer.launch>
+  >
+> => {
   const executablePath = await chromium.executablePath;
 
   if (!executablePath) {
-    const puppeteer = require("puppeteer");
-
     return await puppeteer.launch({
       args: chromium.args,
       headless: true,
@@ -24,6 +27,7 @@ const getBrowserInstance: typeof chromium.puppeteer.launch = async () => {
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const browser = await getBrowserInstance();
+
   const page = await browser.newPage();
 
   await page.goto(process.env.RESUME_URL, { waitUntil: "networkidle0" });
