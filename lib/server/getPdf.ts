@@ -36,7 +36,7 @@ export const getOptions = async () => {
 };
 
 export const getPdf = async (url: string) => {
-  console.log(fs.readdirSync("/var/task/fonts/"));
+  console.log(fs.readdirSync("/var/task/"));
 
   // Start headless chrome instance
   const options = await getOptions();
