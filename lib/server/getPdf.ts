@@ -35,6 +35,8 @@ export const getOptions = async () => {
 };
 
 export const getPdf = async (url: string) => {
+  await chrome.font("/var/task/fonts/CourierNew.ttf");
+
   // Start headless chrome instance
   const options = await getOptions();
   const browser = await puppeteer.launch(options);
@@ -70,7 +72,6 @@ export const getPdf = async (url: string) => {
     displayHeaderFooter: true,
     headerTemplate: "",
     footerTemplate: "",
-    printBackground: true,
   });
 
   // Close chrome instance
