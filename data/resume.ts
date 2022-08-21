@@ -42,7 +42,7 @@ export default {
           kind: "section",
           content: {
             heading:
-              "Staff Engineer, Schedule Engine / HomeX; Remote — 1/2018‑11/2021",
+              "Staff Engineer, Schedule Engine / HomeX; Remote — 1/2018\u201111/2021",
             items: [
               {
                 kind: "list",
@@ -105,7 +105,7 @@ export default {
           kind: "section",
           content: {
             heading:
-              "Front-end Lead (Contractor), BankMobile; Remote — 5/2017‑12/2017",
+              "Front-end Lead (Contractor), BankMobile; Remote — 5/2017\u201112/2017",
             items: [
               {
                 kind: "list",
@@ -134,7 +134,7 @@ export default {
           kind: "section",
           content: {
             heading:
-              "UI Engineer, Apple, iTunes; Cupertino, CA — 1/2016‑5/2017",
+              "UI Engineer, Apple, iTunes; Cupertino, CA — 1/2016\u20115/2017",
             items: [
               {
                 kind: "list",
@@ -173,7 +173,7 @@ export default {
           kind: "section",
           content: {
             heading:
-              "Front-end Web Developer, Apple, Online Store; Cupertino, CA — 8/2014‑1/2016",
+              "Front-end Web Developer, Apple, Online Store; Cupertino, CA — 8/2014\u20111/2016",
             items: [
               {
                 kind: "list",
