@@ -7,24 +7,25 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   resume.sections.forEach(({ heading, items }) => {
     result += `\n${heading}\n\n`;
 
-    items.forEach(({ kind, content }) => {
-      if (kind === "paragraph") {
-        result += `\t${content}\n\n`;
+    items?.forEach((item) => {
+      if (item.kind === "paragraph") {
+        result += `\t${item.content}\n\n`;
       }
 
-      if (kind === "section") {
+      if (item.kind === "section") {
+        const content = item.content;
         result += `\t${content.heading}\n\n`;
 
-        content.items.forEach(({ kind, items }) => {
-          if (kind === "list") {
-            items.forEach(({ content, style }, index) => {
-              if (style === "bold") {
+        content.items?.forEach((subItem) => {
+          if (subItem.kind === "list") {
+            subItem.items?.forEach((listItem, index) => {
+              if (listItem.style === "bold") {
                 result += `\t\t* ${content}\n`;
               } else {
                 result += `\t\t- ${content}\n`;
               }
 
-              if (index === items.length - 1) {
+              if (index === (subItem.items?.length ?? 0) - 1) {
                 result += "\n";
               }
             });
