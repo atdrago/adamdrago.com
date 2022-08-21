@@ -99,7 +99,7 @@ export default function WorkPage() {
             </Link>
             <Link href="/adam-drago-resume.pdf">
               <a
-                className="rounded-lg p-3 bg-sky-500 text-white font-bold no-underline flex gap-1 items-center"
+                className="rounded-lg p-3 bg-sky-500 text-white font-bold no-underline flex gap-1 items-center hidden"
                 download={"adam-drago-resume.pdf"}
                 target="_blank"
               >
