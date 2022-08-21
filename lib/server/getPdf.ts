@@ -36,10 +36,11 @@ export const getOptions = async () => {
 };
 
 export const getPdf = async (url: string) => {
-  console.log(
-    await chrome.font(
-      "https://raw.githack.com/atdrago/adamdrago.com/fix/pdf-resume/fonts/Courier%20New.ttf"
-    )
+  await chrome.font(
+    "https://raw.githack.com/atdrago/adamdrago.com/fix/pdf-resume/fonts/Courier%20New.ttf"
+  );
+  await chrome.font(
+    "https://raw.githack.com/atdrago/adamdrago.com/fix/pdf-resume/fonts/Courier%20New%20Bold.ttf"
   );
 
   // Start headless chrome instance
@@ -50,7 +51,7 @@ export const getPdf = async (url: string) => {
 
   // Visit URL and wait until everything is loaded (available events: load,
   // domcontentloaded, networkidle0, networkidle2)
-  await page.goto(url, { waitUntil: "networkidle0", timeout: 8000 });
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 8000 });
 
   // Scroll to bottom of page to force loading of lazy loaded images
   await page.evaluate(async () => {
