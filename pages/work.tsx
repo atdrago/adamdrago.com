@@ -2,11 +2,6 @@ import { Header } from "components/Header";
 import Link from "next/link";
 import resumeData from "data/resume";
 
-const h2ClassName =
-  "text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors";
-const h3ClassName =
-  "text-xl font-bold sticky top-9 bg-white dark:bg-black transition-colors";
-
 const updatedAt = Intl.DateTimeFormat([], { dateStyle: "full" })
   .format(new Date(resumeData.updatedAt))
   .toString();
@@ -24,9 +19,15 @@ export default function WorkPage() {
         {resumeData.sections.map(({ heading, items }, index) => {
           return (
             <section key={index}>
-              <h2 className={h2ClassName}>{heading}</h2>
-              {items.map(({ kind, content }, index) => {
-                if (kind === "paragraph") {
+              {heading ? (
+                <h2 className="text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors">
+                  {heading}
+                </h2>
+              ) : null}
+              {items?.map((item, index) => {
+                if (item.kind === "paragraph") {
+                  const content = item.content;
+
                   return (
                     <p key={index} className="text-lg">
                       {content}
@@ -34,29 +35,45 @@ export default function WorkPage() {
                   );
                 }
 
-                if (kind === "section") {
+                if (item.kind === "section") {
+                  const content = item.content;
+
                   return (
                     <section key={index}>
-                      <h3 className={h3ClassName}>{content.heading}</h3>
-                      {content.items.map(({ kind, items }, index) => {
-                        if (kind === "list") {
+                      {content.heading ? (
+                        <h3 className="text-2xl font-bold sticky top-9 bg-white dark:bg-black transition-colors">
+                          {content.heading}
+                        </h3>
+                      ) : null}
+                      {content.subheading ? (
+                        <h4 className="text-xl">{content.subheading}</h4>
+                      ) : null}
+                      {content.comment ? (
+                        <p className="italic">{content.comment}</p>
+                      ) : null}
+                      {content.items?.map((subItem, index) => {
+                        if (subItem.kind === "list") {
                           return (
                             <ul key={index} className="text-lg" role="list">
-                              {items.map(({ content, style }, index) => {
+                              {subItem.items?.map((listItem, index) => {
                                 return (
                                   <li
                                     className={
-                                      style === "bold" ? "font-bold" : ""
+                                      listItem.style === "bold"
+                                        ? "font-bold"
+                                        : ""
                                     }
                                     key={index}
                                   >
-                                    {content}
+                                    {listItem.content}
                                   </li>
                                 );
                               })}
                             </ul>
                           );
                         }
+
+                        return null;
                       })}
                     </section>
                   );
@@ -66,7 +83,9 @@ export default function WorkPage() {
           );
         })}
         <section className="pb-8 print:hidden">
-          <h2 className={h2ClassName}>Downloads</h2>
+          <h2 className="text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors">
+            Downloads
+          </h2>
           <div className="flex items-start gap-4">
             <Link href="/adam-drago-resume.txt">
               <a

@@ -1,4 +1,31 @@
-export default {
+interface ResumeItemParagraph {
+  kind: "paragraph";
+  content: string;
+}
+
+interface ResumeItemSection {
+  kind: "section";
+  content: {
+    heading?: string;
+    subheading?: string;
+    comment?: string;
+    items?: (ResumeItemParagraph | ResumeItemSection | ResumeItemList)[];
+  };
+}
+interface ResumeItemList {
+  kind: "list";
+  items?: { content: string; style: "normal" | "bold" }[];
+}
+
+interface Resume {
+  updatedAt: string;
+  sections: {
+    heading: string;
+    items?: (ResumeItemParagraph | ResumeItemSection | ResumeItemList)[];
+  }[];
+}
+
+const resumeData: Resume = {
   updatedAt: "4/29/22",
   sections: [
     {
@@ -41,8 +68,8 @@ export default {
         {
           kind: "section",
           content: {
-            heading:
-              "Staff Engineer, Schedule Engine / HomeX; Remote — 1/2018\u201111/2021",
+            heading: "Staff Engineer, Schedule Engine / HomeX",
+            subheading: "Remote — 1/2018 to 11/2021",
             items: [
               {
                 kind: "list",
@@ -104,8 +131,8 @@ export default {
         {
           kind: "section",
           content: {
-            heading:
-              "Front-end Lead (Contractor), BankMobile; Remote — 5/2017\u201112/2017",
+            heading: "Front-end Lead (Contractor), BankMobile",
+            subheading: "Remote — 5/2017 to 12/2017",
             items: [
               {
                 kind: "list",
@@ -133,8 +160,8 @@ export default {
         {
           kind: "section",
           content: {
-            heading:
-              "UI Engineer, Apple, iTunes; Cupertino, CA — 1/2016\u20115/2017",
+            heading: "UI Engineer, Apple, iTunes",
+            subheading: "Cupertino, CA — 1/2016 to 5/2017",
             items: [
               {
                 kind: "list",
@@ -172,8 +199,8 @@ export default {
         {
           kind: "section",
           content: {
-            heading:
-              "Front-end Web Developer, Apple, Online Store; Cupertino, CA — 8/2014\u20111/2016",
+            heading: "Front-end Web Developer, Apple, Online Store",
+            subheading: "Cupertino, CA — 8/2014 to 1/2016",
             items: [
               {
                 kind: "list",
@@ -205,8 +232,7 @@ export default {
         {
           kind: "section",
           content: {
-            heading: "Previous employers excluded for brevity.",
-            items: [],
+            comment: "Previous employers excluded for brevity.",
           },
         },
       ],
@@ -222,4 +248,6 @@ export default {
       ],
     },
   ],
-} as const;
+};
+
+export default resumeData;

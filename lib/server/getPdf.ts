@@ -42,6 +42,9 @@ export const getPdf = async (url: string) => {
   await chrome.font(
     "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts/Courier%20New%20Bold.ttf"
   );
+  await chrome.font(
+    "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts/Courier%20New%Italic.ttf"
+  );
 
   // Start headless chrome instance
   const options = await getOptions();
