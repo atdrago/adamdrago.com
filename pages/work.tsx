@@ -1,6 +1,7 @@
 import { Header } from "components/Header";
 import Link from "next/link";
 import resumeData from "data/resume";
+import { FileArrowDown } from "phosphor-react";
 
 const updatedAt = Intl.DateTimeFormat([], { dateStyle: "full" })
   .format(new Date(resumeData.updatedAt))
@@ -89,20 +90,20 @@ export default function WorkPage() {
           <div className="flex items-start gap-4">
             <Link href="/adam-drago-resume.txt">
               <a
-                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline"
+                className="rounded-lg p-3 bg-sky-500 text-white font-bold no-underline flex gap-1 items-center"
                 download={"adam-drago-resume.txt"}
                 target="_blank"
               >
-                <span className="text-xl">⇣</span> Plain text file
+                <FileArrowDown size={32} /> TXT
               </a>
             </Link>
             <Link href="/adam-drago-resume.pdf">
               <a
-                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline"
+                className="rounded-lg p-3 bg-sky-500 text-white font-bold no-underline flex gap-1 items-center"
                 download={"adam-drago-resume.pdf"}
                 target="_blank"
               >
-                <span className="text-xl">⇣</span> PDF file
+                <FileArrowDown size={32} /> PDF
               </a>
             </Link>
           </div>
