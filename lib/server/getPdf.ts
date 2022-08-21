@@ -36,7 +36,11 @@ export const getOptions = async () => {
 };
 
 export const getPdf = async (url: string) => {
-  console.log(fs.readdirSync("/var/task/"));
+  console.log(
+    await chrome.font(
+      "https://raw.githack.com/atdrago/adamdrago.com/fix/pdf-resume/fonts/Courier%20New.ttf"
+    )
+  );
 
   // Start headless chrome instance
   const options = await getOptions();
