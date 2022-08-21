@@ -7,6 +7,7 @@
 
 import chrome from "chrome-aws-lambda";
 import puppeteer from "puppeteer-core";
+import fs from "node:fs";
 
 // Path to chrome executable on different platforms
 const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
@@ -35,9 +36,7 @@ export const getOptions = async () => {
 };
 
 export const getPdf = async (url: string) => {
-  const result = await chrome.font("/var/task/fonts/NotoColorEmoji.ttf");
-
-  console.log(JSON.stringify({ result }));
+  console.log(fs.readdirSync("/var/task/fonts/"));
 
   // Start headless chrome instance
   const options = await getOptions();
