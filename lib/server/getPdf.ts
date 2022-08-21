@@ -35,7 +35,7 @@ export const getOptions = async () => {
 };
 
 export const getPdf = async (url: string) => {
-  await chrome.font("/var/task/fonts/CourierNew.ttf");
+  await chrome.font("/var/task/fonts/NotoColorEmoji.ttf");
 
   // Start headless chrome instance
   const options = await getOptions();
