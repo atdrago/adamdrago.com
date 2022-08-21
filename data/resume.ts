@@ -26,7 +26,7 @@ interface Resume {
 }
 
 const resumeData: Resume = {
-  updatedAt: "4/29/22",
+  updatedAt: "8/21/22",
   sections: [
     {
       heading: "Profile",
@@ -65,6 +65,39 @@ const resumeData: Resume = {
     {
       heading: "Experience",
       items: [
+        {
+          kind: "section",
+          content: {
+            heading: "Head of Development / Part Owner, Live Better PHL",
+            subheading: "Remote — 6/2022 to Present",
+            items: [
+              {
+                kind: "list",
+                items: [
+                  {
+                    content:
+                      "Setup error monitoring and logging on existing food ordering site and restaurant menu management site, unearthing several production issues.",
+                    style: "normal",
+                  },
+                  {
+                    content: "Fix production issues affecting existing sites.",
+                    style: "normal",
+                  },
+                  {
+                    content:
+                      "Completely rewrite existing food ordering site using Next.js and TypeScript, with static pages for each restaurant.",
+                    style: "normal",
+                  },
+                  {
+                    content:
+                      "Learn enough Swift and UIKit to help fix bugs in native iOS app.",
+                    style: "normal",
+                  },
+                ],
+              },
+            ],
+          },
+        },
         {
           kind: "section",
           content: {
