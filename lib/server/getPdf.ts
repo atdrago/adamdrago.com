@@ -37,10 +37,10 @@ export const getOptions = async () => {
 
 export const getPdf = async (url: string) => {
   await chrome.font(
-    "https://raw.githack.com/atdrago/adamdrago.com/fix/pdf-resume/fonts/Courier%20New.ttf"
+    "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts/Courier%20New.ttf"
   );
   await chrome.font(
-    "https://raw.githack.com/atdrago/adamdrago.com/fix/pdf-resume/fonts/Courier%20New%20Bold.ttf"
+    "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts/Courier%20New%20Bold.ttf"
   );
 
   // Start headless chrome instance
