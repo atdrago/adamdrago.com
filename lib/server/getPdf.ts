@@ -64,7 +64,7 @@ export const getPdf = async (url: string) => {
   });
 
   // Tell Chrome to generate the PDF
-  await page.emulateMediaType("screen");
+  await page.emulateMediaType("print");
   const buffer = await page.pdf({
     format: "a4",
     displayHeaderFooter: true,
