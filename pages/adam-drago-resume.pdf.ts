@@ -5,7 +5,7 @@ import { getPdf } from "lib/server/getPdf";
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const pdf = await getPdf(process.env.RESUME_URL);
 
-  res.setHeader("Content-Type", "application/pdf; charset=utf-8");
+  res.setHeader("Content-Type", "application/pdf");
   res.setHeader("Content-Length", pdf.length);
   res.setHeader(
     "Content-Disposition",
