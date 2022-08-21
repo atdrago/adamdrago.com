@@ -90,15 +90,17 @@ export default function WorkPage() {
             <Link href="/adam-drago-resume.txt">
               <a
                 className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline"
-                download={true}
+                download={"adam-drago-resume.txt"}
+                target="_blank"
               >
                 <span className="text-xl">⇣</span> Plain text file
               </a>
             </Link>
             <Link href="/adam-drago-resume.pdf">
               <a
-                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline hidden"
-                download={true}
+                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline"
+                download={"adam-drago-resume.pdf"}
+                target="_blank"
               >
                 <span className="text-xl">⇣</span> PDF file
               </a>

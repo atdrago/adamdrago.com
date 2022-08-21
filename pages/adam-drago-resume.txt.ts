@@ -2,7 +2,7 @@ import type { GetServerSideProps } from "next";
 import resume from "data/resume";
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  let result = "";
+  let result = "Adam Drago\n";
 
   resume.sections.forEach(({ heading, items }) => {
     result += `\n${heading}\n\n`;
@@ -14,15 +14,20 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
       if (item.kind === "section") {
         const content = item.content;
-        result += `\t${content.heading}\n\n`;
+
+        result +=
+          [content.heading, content.subheading, content.comment]
+            .filter((str) => !!str)
+            .map((str) => (str ? `\t${str}\n` : ""))
+            .join("") + "\n";
 
         content.items?.forEach((subItem) => {
           if (subItem.kind === "list") {
             subItem.items?.forEach((listItem, index) => {
               if (listItem.style === "bold") {
-                result += `\t\t* ${content}\n`;
+                result += `\t\t* ${listItem.content}\n`;
               } else {
-                result += `\t\t- ${content}\n`;
+                result += `\t\t- ${listItem.content}\n`;
               }
 
               if (index === (subItem.items?.length ?? 0) - 1) {
