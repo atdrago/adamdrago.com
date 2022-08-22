@@ -97,17 +97,15 @@ export default function WorkPage() {
                 <FileArrowDown size={32} /> TXT
               </a>
             </Link>
-            {process.env.NODE_ENV === "development" ? (
-              <Link href="/adam-drago-resume.pdf">
-                <a
-                  className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
-                  download={"adam-drago-resume.pdf"}
-                  target="_blank"
-                >
-                  <FileArrowDown size={32} /> PDF
-                </a>
-              </Link>
-            ) : null}
+            <Link href="/adam-drago-resume.pdf">
+              <a
+                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
+                download={"adam-drago-resume.pdf"}
+                target="_blank"
+              >
+                <FileArrowDown size={32} /> PDF
+              </a>
+            </Link>
           </div>
         </section>
       </main>
