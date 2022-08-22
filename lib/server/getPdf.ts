@@ -56,24 +56,6 @@ export const getPdf = async (url: string) => {
   // domcontentloaded, networkidle0, networkidle2)
   await page.goto(url, { waitUntil: "networkidle2", timeout: 8000 });
 
-  // Scroll to bottom of page to force loading of lazy loaded images
-  await page.evaluate(async () => {
-    await new Promise((resolve) => {
-      let totalHeight = 0;
-      const distance = 100;
-      const timer = setInterval(() => {
-        const scrollHeight = document.body.scrollHeight;
-        window.scrollBy(0, distance);
-        totalHeight += distance;
-
-        if (totalHeight >= scrollHeight) {
-          clearInterval(timer);
-          resolve(null);
-        }
-      }, 5);
-    });
-  });
-
   // Tell Chrome to generate the PDF
   await page.emulateMediaType("print");
   const buffer = await page.pdf({
