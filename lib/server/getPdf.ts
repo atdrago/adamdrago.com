@@ -7,7 +7,6 @@
 
 import chrome from "chrome-aws-lambda";
 import puppeteer from "puppeteer-core";
-import fs from "node:fs";
 
 // Path to chrome executable on different platforms
 const chromeExecutables: Partial<Record<typeof process.platform, string>> = {

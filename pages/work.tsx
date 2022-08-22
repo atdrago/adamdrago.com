@@ -91,7 +91,7 @@ export default function WorkPage() {
             <Link href="/adam-drago-resume.txt">
               <a
                 className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
-                download={"adam-drago-resume.txt"}
+                download="adam-drago-resume.txt"
                 target="_blank"
               >
                 <FileArrowDown size={32} /> TXT
@@ -100,7 +100,7 @@ export default function WorkPage() {
             <Link href="/adam-drago-resume.pdf">
               <a
                 className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
-                download={"adam-drago-resume.pdf"}
+                download="adam-drago-resume.pdf"
                 target="_blank"
               >
                 <FileArrowDown size={32} /> PDF
