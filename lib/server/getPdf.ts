@@ -60,9 +60,11 @@ export const getPdf = async (url: string) => {
   await page.emulateMediaType("print");
   const buffer = await page.pdf({
     format: "a4",
-    displayHeaderFooter: true,
-    headerTemplate: "",
-    footerTemplate: "",
+    displayHeaderFooter: false,
+    margin: {
+      top: 80,
+      bottom: 80,
+    },
   });
 
   // Close chrome instance
