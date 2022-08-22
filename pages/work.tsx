@@ -87,25 +87,27 @@ export default function WorkPage() {
           <h2 className="text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors">
             Downloads
           </h2>
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-6">
             <Link href="/adam-drago-resume.txt">
               <a
-                className="rounded-lg p-3 bg-sky-500 text-white font-bold no-underline flex gap-1 items-center"
+                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
                 download={"adam-drago-resume.txt"}
                 target="_blank"
               >
                 <FileArrowDown size={32} /> TXT
               </a>
             </Link>
-            <Link href="/adam-drago-resume.pdf">
-              <a
-                className="rounded-lg p-3 bg-sky-500 text-white font-bold no-underline flex gap-1 items-center hidden"
-                download={"adam-drago-resume.pdf"}
-                target="_blank"
-              >
-                <FileArrowDown size={32} /> PDF
-              </a>
-            </Link>
+            {process.env.NODE_ENV === "development" ? (
+              <Link href="/adam-drago-resume.pdf">
+                <a
+                  className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
+                  download={"adam-drago-resume.pdf"}
+                  target="_blank"
+                >
+                  <FileArrowDown size={32} /> PDF
+                </a>
+              </Link>
+            ) : null}
           </div>
         </section>
       </main>
