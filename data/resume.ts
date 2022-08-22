@@ -1,3 +1,5 @@
+import { oneLine } from "common-tags";
+
 interface ResumeItemParagraph {
   kind: "paragraph";
   content: string;
@@ -33,7 +35,7 @@ const resumeData: Resume = {
       items: [
         {
           kind: "paragraph",
-          content: `
+          content: oneLine`
             Front-end engineer with a passion for building beautiful user
             interfaces and exceptional user experiences while adhering to
             established best practices and industry standards. Big fan of
@@ -48,14 +50,14 @@ const resumeData: Resume = {
       items: [
         {
           kind: "paragraph",
-          content: `
+          content: oneLine`
             JavaScript, TypeScript, CSS, Semantic and Accessible HTML, REST,
             GraphQL
           `,
         },
         {
           kind: "paragraph",
-          content: `
+          content: oneLine`
             React, Next.js, React Query, Apollo, and CSS frameworks like
             vanilla-extract, tailwindcss, CSS Modules, Styled Components, and
             SCSS
@@ -67,7 +69,7 @@ const resumeData: Resume = {
         },
         {
           kind: "paragraph",
-          content: `
+          content: oneLine`
             Rollup, Webpack (mostly through Create React App), Gulp, custom
             Node.js build scripts
           `,
@@ -87,7 +89,7 @@ const resumeData: Resume = {
                 kind: "list",
                 items: [
                   {
-                    content: `
+                    content: oneLine`
                       Setup error monitoring and logging on existing food
                       ordering site and restaurant menu management site,
                       unearthing several production issues.
@@ -99,7 +101,7 @@ const resumeData: Resume = {
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Completely rewrite existing food ordering site using
                       Next.js and TypeScript, with static pages for each
                       restaurant.
@@ -107,7 +109,7 @@ const resumeData: Resume = {
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Learn enough Swift and UIKit to help fix bugs in native
                       iOS app.
                     `,
@@ -128,14 +130,14 @@ const resumeData: Resume = {
                 kind: "list",
                 items: [
                   {
-                    content: `
+                    content: oneLine`
                       Plan out architecture for front-end of Schedule Engine
                       application.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Create script used to embed Schedule Engine scheduling
                       widget, exposing client-side API to client websites.
                       Written in TypeScript, initially built with Webpack,
@@ -144,7 +146,7 @@ const resumeData: Resume = {
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Create front-end of white-labeled scheduling widget, with
                       several theming options for changing colors, copy, and
                       preferences. Written in TypeScript, built with React and
@@ -159,42 +161,42 @@ const resumeData: Resume = {
                     style: "bold",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Build and maintain shared ESLint config used by front
                       -end projects across the company.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Assist HomeX.com front-end team in adding features and
                       fixing bugs.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Review hundreds of resumes and assist in the hiring
                       of several front-end engineers.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Plan out architecture for new Schedule Engine Enterprise
                       product.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Lead and assist team in creating React component library
                       NPM module, written in TypeScript, built with Rollup.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Lead and assist team in building out two separate
                       dashboards for Schedule Engine Enterprise.
                     `,
@@ -215,21 +217,21 @@ const resumeData: Resume = {
                 kind: "list",
                 items: [
                   {
-                    content: `
+                    content: oneLine`
                       Work with front-end and back-end teams to fix bugs and add
                       features to existing AngularJS application.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Plan out and implement build system for white-labeled
                       banking web application using Gulp and SCSS.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Lead team and help build out features for new
                       white-labeled application.
                     `,
@@ -250,21 +252,21 @@ const resumeData: Resume = {
                 kind: "list",
                 items: [
                   {
-                    content: `
+                    content: oneLine`
                       Build and maintain JavaScript bridge between Podcasts
                       client and server
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Build and maintain apps for tvOS (What's New, Subscription
                       Management, and others).
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Debug and fix issues with iOS apps (iTunes Store, App
                       Store, Podcasts, iTunes U, iBooks), Desktop iTunes, and
                       iTunes Web Preview.
@@ -272,14 +274,14 @@ const resumeData: Resume = {
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Work with localization team to create desirable user
                       experiences across all locales.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Work with back-end teams to create APIs that match desired
                       Human Interface team designs.
                     `,
@@ -300,14 +302,14 @@ const resumeData: Resume = {
                 kind: "list",
                 items: [
                   {
-                    content: `
+                    content: oneLine`
                       Develop and maintain marketing content for the Apple
                       Online Store and Apple Store iOS App.
                     `,
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Anticipate and provide solutions for localization and
                       accessibility issues.
                     `,
@@ -318,7 +320,7 @@ const resumeData: Resume = {
                     style: "normal",
                   },
                   {
-                    content: `
+                    content: oneLine`
                       Write and maintain custom Gulp module to compile Apple
                       Store App style sheets using Sass, greatly improving team
                       performance, and allowing code modularity, shared styles,
