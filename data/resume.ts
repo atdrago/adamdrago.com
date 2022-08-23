@@ -1,31 +1,6 @@
 import { oneLine } from "common-tags";
 
-interface ResumeItemParagraph {
-  kind: "paragraph";
-  content: string;
-}
-
-interface ResumeItemSection {
-  kind: "section";
-  content: {
-    heading?: string;
-    subheading?: string;
-    comment?: string;
-    items?: (ResumeItemParagraph | ResumeItemSection | ResumeItemList)[];
-  };
-}
-interface ResumeItemList {
-  kind: "list";
-  items?: { content: string; style: "normal" | "bold" }[];
-}
-
-interface Resume {
-  updatedAt: string;
-  sections: {
-    heading: string;
-    items?: (ResumeItemParagraph | ResumeItemSection | ResumeItemList)[];
-  }[];
-}
+import type { Resume } from "types";
 
 const resumeData: Resume = {
   updatedAt: "8/21/22",

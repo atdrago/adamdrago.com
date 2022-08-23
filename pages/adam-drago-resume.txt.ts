@@ -1,6 +1,52 @@
 import type { GetServerSideProps } from "next";
 import resume from "data/resume";
 
+import type { ResumeItem } from "types";
+
+const getTextForItem = (item: ResumeItem, level: number) => {
+  const { kind } = item;
+
+  const levelArr = Array.from({ length: level });
+  const levelTabs = levelArr.map(() => "\t").join("");
+  const levelNewLines = levelArr.map(() => "\n").join("") + "\n";
+
+  switch (kind) {
+    case "paragraph":
+      return `${levelTabs}${item.content}${levelNewLines}`;
+    case "section":
+      const content = item.content;
+      let section =
+        "\n" +
+        [content.heading, content.subheading, content.comment]
+          .filter((str) => !!str)
+          .map((str) => (str ? `\t${str}\n` : ""))
+          .join("") +
+        "\n";
+
+      section +=
+        content.items
+          ?.map((subItem) => getTextForItem(subItem, level + 1))
+          .join("") ?? "";
+
+      return section;
+    case "list":
+      const { items } = item;
+
+      return items
+        ? items
+            .map((listItem) => {
+              const bullet = listItem.style === "bold" ? "*" : "-";
+
+              return `${levelTabs}${bullet} ${listItem.content}`;
+            })
+            .join("\n") + "\n"
+        : "";
+    default:
+      return "";
+      break;
+  }
+};
+
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   let result = "Adam Drago\n";
 
@@ -8,35 +54,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     result += `\n${heading}\n\n`;
 
     items?.forEach((item) => {
-      if (item.kind === "paragraph") {
-        result += `\t${item.content}\n\n`;
-      }
-
-      if (item.kind === "section") {
-        const content = item.content;
-
-        result +=
-          [content.heading, content.subheading, content.comment]
-            .filter((str) => !!str)
-            .map((str) => (str ? `\t${str}\n` : ""))
-            .join("") + "\n";
-
-        content.items?.forEach((subItem) => {
-          if (subItem.kind === "list") {
-            subItem.items?.forEach((listItem, index) => {
-              if (listItem.style === "bold") {
-                result += `\t\t* ${listItem.content}\n`;
-              } else {
-                result += `\t\t- ${listItem.content}\n`;
-              }
-
-              if (index === (subItem.items?.length ?? 0) - 1) {
-                result += "\n";
-              }
-            });
-          }
-        });
-      }
+      result += getTextForItem(item, 1);
     });
   });
 
