@@ -40,6 +40,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     });
   });
 
+  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
   res.setHeader(
     "Content-Disposition",
