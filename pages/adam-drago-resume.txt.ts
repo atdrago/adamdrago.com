@@ -11,52 +11,59 @@ const getTextForItem = (item: ResumeItem, level: number) => {
   const levelNewLines = levelArr.map(() => "\n").join("") + "\n";
 
   switch (kind) {
-    case "paragraph":
-      return `${levelTabs}${item.content}${levelNewLines}`;
-    case "section":
-      const content = item.content;
-      let section =
-        "\n" +
-        [content.heading, content.subheading, content.comment]
-          .filter((str) => !!str)
-          .map((str) => (str ? `\t${str}\n` : ""))
-          .join("") +
-        "\n";
-
-      section +=
-        content.items
-          ?.map((subItem) => getTextForItem(subItem, level + 1))
-          .join("") ?? "";
-
-      return section;
-    case "list":
+    case "list": {
       const { items } = item;
 
-      return items
-        ? items
-            .map((listItem) => {
-              const bullet = listItem.style === "bold" ? "*" : "-";
+      if (!items) {
+        return "";
+      }
 
-              return `${levelTabs}${bullet} ${listItem.content}`;
-            })
-            .join("\n") + "\n"
-        : "";
+      return items.reduce((acc, listItem) => {
+        const bullet = listItem.style === "bold" ? "*" : "-";
+
+        return acc + `${levelTabs}${bullet} ${listItem.content}\n`;
+      }, "");
+    }
+    case "paragraph": {
+      return `${levelTabs}${item.content}${levelNewLines}`;
+    }
+    case "section": {
+      const content = item.content;
+
+      let section =
+        [content.heading, content.subheading, content.comment].reduce(
+          (acc = "", str) => (str ? acc + `\t${str}\n` : acc),
+          ""
+        ) + "\n";
+
+      if (content.items) {
+        section += content.items.reduce(
+          (acc, subItem) => acc + getTextForItem(subItem, level + 1),
+          ""
+        );
+      }
+
+      section += "\n";
+
+      return section;
+    }
     default:
       return "";
-      break;
   }
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  let result = "Adam Drago\n";
-
-  resume.sections.forEach(({ heading, items }) => {
-    result += `\n${heading}\n\n`;
-
-    items?.forEach((item) => {
-      result += getTextForItem(item, 1);
-    });
-  });
+  const result =
+    "Adam Drago\n" +
+    resume.sections
+      .map(
+        ({ heading, items }) =>
+          `\n${heading}\n\n${items?.reduce(
+            (acc, item) => acc + getTextForItem(item, 1),
+            ""
+          )}`
+      )
+      .join("");
 
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
