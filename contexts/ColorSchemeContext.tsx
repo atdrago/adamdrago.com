@@ -21,7 +21,7 @@ interface ColorSchemeContextProps {
 export const ColorSchemeContext = createContext<ColorSchemeContextProps>({
   colorScheme: "system",
   computedColorScheme: "light",
-  setColorScheme: () => {},
+  setColorScheme: () => undefined,
 });
 
 export const ColorSchemeProvider = ({
@@ -53,15 +53,18 @@ export const ColorSchemeProvider = ({
       case "dark":
         localStorage.theme = "dark";
         nextComputedColorScheme = "dark";
+
         break;
       case "light":
         localStorage.theme = "light";
         nextComputedColorScheme = "light";
+
         break;
       default:
       case "system":
         localStorage.removeItem("theme");
         nextComputedColorScheme = isDarkPreferred ? "dark" : "light";
+
         break;
     }
 

@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { MoonStars, Sun } from "phosphor-react";

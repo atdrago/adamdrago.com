@@ -33,20 +33,20 @@ export default function WorkPage() {
             if that is more convenient.
           </p>
         </aside>
-        {resumeData.sections.map(({ heading, items }, index) => {
+        {resumeData.sections.map(({ heading, items }, sectionIndex) => {
           return (
-            <section key={index}>
+            <section key={sectionIndex}>
               {heading ? (
                 <h2 className="text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors">
                   {heading}
                 </h2>
               ) : null}
-              {items?.map((item, index) => {
+              {items?.map((item, itemIndex) => {
                 if (item.kind === "paragraph") {
                   const content = item.content;
 
                   return (
-                    <p key={index} className="text-lg">
+                    <p key={itemIndex} className="text-lg">
                       {content}
                     </p>
                   );
@@ -56,7 +56,7 @@ export default function WorkPage() {
                   const content = item.content;
 
                   return (
-                    <section key={index}>
+                    <section key={itemIndex}>
                       {content.heading ? (
                         <h3 className="text-2xl font-bold sticky top-9 bg-white dark:bg-black transition-colors">
                           {content.heading}
@@ -68,11 +68,15 @@ export default function WorkPage() {
                       {content.comment ? (
                         <p className="italic">{content.comment}</p>
                       ) : null}
-                      {content.items?.map((subItem, index) => {
+                      {content.items?.map((subItem, subItemIndex) => {
                         if (subItem.kind === "list") {
                           return (
-                            <ul key={index} className="text-lg" role="list">
-                              {subItem.items?.map((listItem, index) => {
+                            <ul
+                              key={subItemIndex}
+                              className="text-lg"
+                              role="list"
+                            >
+                              {subItem.items?.map((listItem, listItemIndex) => {
                                 return (
                                   <li
                                     className={
@@ -80,7 +84,7 @@ export default function WorkPage() {
                                         ? "font-bold"
                                         : ""
                                     }
-                                    key={index}
+                                    key={listItemIndex}
                                   >
                                     {listItem.content}
                                   </li>

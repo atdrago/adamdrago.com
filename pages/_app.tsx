@@ -14,9 +14,15 @@ function App({ Component, pageProps }: AppProps) {
   switch (router?.pathname) {
     case "/work":
       page = "work";
+
       break;
     case "/contact":
       page = "contact";
+
+      break;
+    default:
+      // Do nothing
+
       break;
   }
 
