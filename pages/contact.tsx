@@ -1,3 +1,5 @@
+import { Peace, Heart, Code } from "phosphor-react";
+
 import { Header } from "components/Header";
 
 export default function ContactPage() {
@@ -8,14 +10,16 @@ export default function ContactPage() {
         <section>
           <p className="text-lg">
             Please email me at{" "}
-            <b className="text-bold">
-              <a href="mailto:atdrago+business@gmail.com">
-                atdrago+business@gmail.com
-              </a>
-            </b>{" "}
+            <a href="mailto:atdrago+business@gmail.com">
+              atdrago+business@gmail.com
+            </a>{" "}
             with any questions or inquiries. Thanks!
           </p>
-          <p className="text-lg">✌🏻 🖤</p>
+          <p className="flex gap-2 text-stone-600 dark:text-white">
+            <Peace alt="peace" weight="bold" height="28" width="28" />
+            <Heart alt="love" weight="bold" height="28" width="28" />
+            <Code alt="code" weight="bold" height="28" width="28" />
+          </p>
         </section>
       </main>
     </div>

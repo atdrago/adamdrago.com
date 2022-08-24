@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+
+import { GitHubLogo } from "components/GitHubLogo";
 import { SelectField } from "components/SelectField";
 import { useColorSchemeContext } from "contexts/ColorSchemeContext";
 
@@ -43,7 +45,7 @@ export const Header = () => {
         <option value="system">system</option>
       </SelectField>
       <h1 className="text-5xl lg:text-7xl font-bold">Adam Drago</h1>
-      <nav className="print:hidden">
+      <nav className="print:hidden flex flex-col gap-6">
         <ul className="flex gap-4 lg:gap-8">
           {routes.map(({ name, href }) => (
             <li key={href}>
@@ -60,6 +62,19 @@ export const Header = () => {
               </Link>
             </li>
           ))}
+        </ul>
+        <ul>
+          <li>
+            <Link href="https://github.com/atdrago">
+              <a
+                target="_blank"
+                className="text-stone-600 dark:text-white h-7 w-7 block"
+                rel="noreferrer noopener"
+              >
+                <GitHubLogo />
+              </a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
