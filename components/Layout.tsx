@@ -77,7 +77,7 @@ export const Layout = ({ children, page }: PropsWithChildren<LayoutProps>) => {
       />
       <div
         className={
-          "mx-auto absolute left-0 right-0 top-2/3 print:top-32 px-8 font-serif max-w-prose"
+          "mx-auto absolute left-0 right-0 top-2/3 print:top-0 px-8 font-serif max-w-prose"
         }
       >
         {children}
