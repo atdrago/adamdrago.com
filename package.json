@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",
+    "classnames": "^2.3.1",
     "common-tags": "^1.8.2",
     "next": "12.2.5",
     "phosphor-react": "^1.4.1",

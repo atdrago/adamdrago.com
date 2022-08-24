@@ -9,12 +9,10 @@ import {
 } from "react";
 
 type ComputedColorScheme = "dark" | "light";
-type ComputedColorSchemeIcon = "☾" | "☀";
 
 interface ColorSchemeContextProps {
   colorScheme: "dark" | "light" | "system" | string;
   computedColorScheme: ComputedColorScheme;
-  computedColorSchemeIcon: ComputedColorSchemeIcon;
   setColorScheme: Dispatch<
     SetStateAction<"dark" | "light" | "system" | string>
   >;
@@ -23,7 +21,6 @@ interface ColorSchemeContextProps {
 export const ColorSchemeContext = createContext<ColorSchemeContextProps>({
   colorScheme: "system",
   computedColorScheme: "light",
-  computedColorSchemeIcon: "☀",
   setColorScheme: () => {},
 });
 
@@ -80,14 +77,11 @@ export const ColorSchemeProvider = ({
     }
   }, [colorScheme]);
 
-  const computedColorSchemeIcon = computedColorScheme === "light" ? "☀" : "☾";
-
   return (
     <ColorSchemeContext.Provider
       value={{
         colorScheme,
         computedColorScheme,
-        computedColorSchemeIcon,
         setColorScheme,
       }}
     >

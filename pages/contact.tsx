@@ -15,7 +15,7 @@ export default function ContactPage() {
             </a>{" "}
             with any questions or inquiries. Thanks!
           </p>
-          <p className="flex gap-2 text-stone-600 dark:text-white">
+          <p className="flex gap-2 text-stone-600 dark:text-stone-300">
             <Peace alt="peace" weight="bold" height="28" width="28" />
             <Heart alt="love" weight="bold" height="28" width="28" />
             <Code alt="code" weight="bold" height="28" width="28" />
