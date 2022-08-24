@@ -1,6 +1,6 @@
 import type { GetServerSideProps } from "next";
-import resume from "data/resume";
 
+import resume from "data/resume";
 import type { ResumeItem } from "types";
 
 const getTextForItem = (item: ResumeItem, level: number) => {

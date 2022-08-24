@@ -1,4 +1,4 @@
-import { Peace, Heart, Code } from "phosphor-react";
+import { Code, Heart, Peace } from "phosphor-react";
 
 import { Header } from "components/Header";
 

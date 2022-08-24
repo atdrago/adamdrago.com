@@ -1,7 +1,8 @@
-import { Header } from "components/Header";
 import Link from "next/link";
-import resumeData from "data/resume";
 import { FileArrowDown } from "phosphor-react";
+
+import { Header } from "components/Header";
+import resumeData from "data/resume";
 
 const updatedAt = Intl.DateTimeFormat([], { dateStyle: "full" })
   .format(new Date(resumeData.updatedAt))

@@ -1,10 +1,11 @@
-import type { PropsWithChildren } from "react";
 import Head from "next/head";
-import cherryTreeImage from "public/static/cherry-tree.jpg";
-import cherryTreeDarkImage from "public/static/cherry-tree-dark.jpg";
-import coffeeMugImage from "public/static/coffee-mug.png";
-import { useColorSchemeContext } from "contexts/ColorSchemeContext";
+import type { PropsWithChildren } from "react";
+
 import { BackgroundImage } from "components/BackgroundImage";
+import { useColorSchemeContext } from "contexts/ColorSchemeContext";
+import cherryTreeDarkImage from "public/static/cherry-tree-dark.jpg";
+import cherryTreeImage from "public/static/cherry-tree.jpg";
+import coffeeMugImage from "public/static/coffee-mug.png";
 
 interface LayoutProps {
   page: "home" | "work" | "contact";
