@@ -10,9 +10,7 @@ export default function ContactPage() {
         <section>
           <p className="text-lg">
             Please email me at{" "}
-            <a href="mailto:atdrago+business@gmail.com">
-              atdrago+business@gmail.com
-            </a>{" "}
+            <a href="mailto:atdrago+business@gmail.com">atdrago@gmail.com</a>{" "}
             with any questions or inquiries. Thanks!
           </p>
           <p className="flex gap-2 text-stone-600 dark:text-stone-300">

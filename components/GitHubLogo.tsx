@@ -1,12 +1,18 @@
-export const GitHubLogo = () => {
+import classNames from "classnames";
+
+export const GitHubLogo = ({
+  className,
+  ...props
+}: JSX.IntrinsicElements["svg"]) => {
   return (
     <svg
-      className="h-full w-full"
+      className={classNames(className)}
       height="32"
       aria-hidden="true"
       viewBox="0 0 16 16"
       version="1.1"
       width="32"
+      {...props}
     >
       <path
         fill="currentColor"
