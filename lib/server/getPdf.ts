@@ -34,16 +34,25 @@ export const getOptions = async () => {
   };
 };
 
+const cdnFontsPath =
+  "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts";
+
+const courierNewPath = `${cdnFontsPath}/${encodeURIComponent(
+  "Courier New.ttf"
+)}`;
+const courierNewBoldPath = `${cdnFontsPath}/${encodeURIComponent(
+  "Courier New Bold.ttf"
+)}`;
+const courierNewItalicPath = `${cdnFontsPath}/${encodeURIComponent(
+  "Courier New Italic.ttf"
+)}`;
+
 export const getPdf = async (url: string) => {
-  await chrome.font(
-    "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts/Courier%20New.ttf"
-  );
-  await chrome.font(
-    "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts/Courier%20New%20Bold.ttf"
-  );
-  await chrome.font(
-    "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts/Courier%20New%20Italic.ttf"
-  );
+  // Load the fonts that are used on the site. This must be done before
+  // puppeteer.launch(...) is called below.
+  await chrome.font(courierNewPath);
+  await chrome.font(courierNewBoldPath);
+  await chrome.font(courierNewItalicPath);
 
   // Start headless chrome instance
   const options = await getOptions();
