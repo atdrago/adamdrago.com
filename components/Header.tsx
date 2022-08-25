@@ -33,7 +33,7 @@ export const Header = () => {
     useColorSchemeContext();
 
   return (
-    <header className="flex flex-col gap-3 lg:gap-4 text-black dark:text-neutral-100 transition-colors">
+    <header className="flex flex-col gap-3 lg:gap-4 text-stone-900 dark:text-stone-100 transition-colors">
       <SelectField
         className={
           "absolute top-0 left-0 w-min leading-none print:hidden text-stone-600 dark:text-yellow-100"
