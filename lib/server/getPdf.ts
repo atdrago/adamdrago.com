@@ -5,7 +5,7 @@
  * Also, @see https://github.com/berstend/puppeteer-extra/issues/93#issuecomment-712364816
  */
 
-import chrome from "chrome-aws-lambda";
+import chrome from "@sparticuz/chrome-aws-lambda";
 import puppeteer from "puppeteer-core";
 
 // Path to chrome executable on different platforms
