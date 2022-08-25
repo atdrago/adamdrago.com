@@ -62,10 +62,11 @@ export const getPdf = async (url: string) => {
 
   // Visit URL and wait until everything is loaded (available events: load,
   // domcontentloaded, networkidle0, networkidle2)
-  await page.goto(url, { waitUntil: "networkidle2", timeout: 8000 });
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 2000 });
 
   // Tell Chrome to generate the PDF
   await page.emulateMediaType("print");
+
   const buffer = await page.pdf({
     format: "a4",
     displayHeaderFooter: false,
