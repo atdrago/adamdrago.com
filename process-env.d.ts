@@ -1,5 +1,3 @@
 declare namespace NodeJS {
-  export interface ProcessEnv {
-    RESUME_URL: string;
-  }
+  export interface ProcessEnv {}
 }

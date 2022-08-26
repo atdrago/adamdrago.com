@@ -1,9 +1,9 @@
 import type { GetServerSideProps } from "next";
 
-import { getPdf } from "lib/server/getPdf";
+import { getResumePdf } from "lib/server/getResumePdf";
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const pdf = await getPdf(process.env.RESUME_URL);
+  const pdf = await getResumePdf();
 
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
   res.setHeader("Content-Type", "application/pdf");
