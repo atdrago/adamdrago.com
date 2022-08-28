@@ -67,7 +67,8 @@ export const getResumePdf = async () => {
       <Layout page="work">
         <WorkPage />
       </Layout>
-    )
+    ),
+    { waitUntil: "networkidle2", timeout: 2000 }
   );
 
   // Attempt to load CSS
