@@ -55,7 +55,9 @@ export const Header = () => {
         <option value="light">light</option>
         <option value="system">system</option>
       </SelectField>
-      <h1 className="text-5xl lg:text-7xl font-bold">Adam Drago</h1>
+      <h1 className="text-5xl lg:text-7xl print:text-3xl font-bold">
+        Adam Drago
+      </h1>
       <nav className="flex flex-col gap-3 lg:gap-4">
         <ul className="flex gap-4 lg:gap-8 print:hidden">
           {routes.map(({ name, href }) => (
@@ -82,6 +84,7 @@ export const Header = () => {
                   flex gap-3
                   text-stone-600 dark:text-stone-300
                   items-center
+                  text-sm
                 "
               >
                 <LinkIcon className="h-7 w-7 print:h-5 print:w-5" />
@@ -97,6 +100,7 @@ export const Header = () => {
                   flex gap-3
                   text-stone-600 dark:text-stone-300
                   items-center
+                  text-sm
                 "
                 rel="noreferrer noopener"
               >
@@ -113,6 +117,7 @@ export const Header = () => {
                   flex gap-3
                   text-stone-600 dark:text-stone-300
                   items-center
+                  text-sm
                 "
                 rel="noreferrer noopener"
               >
@@ -129,6 +134,7 @@ export const Header = () => {
                   flex gap-3
                   text-stone-600 dark:text-stone-300
                   items-center
+                  text-sm
                 "
                 rel="noreferrer noopener"
               >

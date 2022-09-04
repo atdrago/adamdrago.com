@@ -14,7 +14,7 @@ export default function WorkPage() {
   return (
     <div className="flex flex-col gap-2">
       <Header />
-      <main className="prose lg:prose-xl dark:prose-invert">
+      <main className="prose prose-lg print:prose-sm dark:prose-invert">
         <aside className="print:hidden">
           <p className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 px-3 py-2 text-lg transition-colors">
             The following is my resumé, updated as of <b>{updatedAt}</b>. It is
@@ -37,7 +37,7 @@ export default function WorkPage() {
           return (
             <section key={sectionIndex}>
               {heading ? (
-                <h2 className="text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors">
+                <h2 className="font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors">
                   {heading}
                 </h2>
               ) : null}
@@ -46,7 +46,7 @@ export default function WorkPage() {
                   const content = item.content;
 
                   return (
-                    <p key={itemIndex} className="text-lg">
+                    <p key={itemIndex} className="">
                       {content}
                     </p>
                   );
@@ -58,12 +58,12 @@ export default function WorkPage() {
                   return (
                     <section key={itemIndex}>
                       {content.heading ? (
-                        <h3 className="text-2xl font-bold sticky top-9 bg-white dark:bg-black transition-colors">
+                        <h3 className="font-bold sticky top-9 bg-white dark:bg-black transition-colors">
                           {content.heading}
                         </h3>
                       ) : null}
                       {content.subheading ? (
-                        <h4 className="text-xl">{content.subheading}</h4>
+                        <h4 className="">{content.subheading}</h4>
                       ) : null}
                       {content.comment ? (
                         <p className="italic">{content.comment}</p>
@@ -71,11 +71,7 @@ export default function WorkPage() {
                       {content.items?.map((subItem, subItemIndex) => {
                         if (subItem.kind === "list") {
                           return (
-                            <ul
-                              key={subItemIndex}
-                              className="text-lg"
-                              role="list"
-                            >
+                            <ul key={subItemIndex} className="" role="list">
                               {subItem.items?.map((listItem, listItemIndex) => {
                                 return (
                                   <li
@@ -104,7 +100,7 @@ export default function WorkPage() {
           );
         })}
         <section className="pb-8 print:hidden">
-          <h2 className="text-3xl font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors">
+          <h2 className="font-bold sticky top-0 bg-white dark:bg-black z-10 transition-colors">
             Downloads
           </h2>
           <div className="flex items-start gap-6">

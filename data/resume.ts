@@ -3,7 +3,7 @@ import { oneLine } from "common-tags";
 import type { Resume } from "types";
 
 const resumeData: Resume = {
-  updatedAt: "8/24/22",
+  updatedAt: "9/4/22",
   sections: [
     {
       heading: "Profile",
@@ -11,11 +11,11 @@ const resumeData: Resume = {
         {
           kind: "paragraph",
           content: oneLine`
-            Front-end engineer with a passion for building beautiful user
-            interfaces and exceptional user experiences while adhering to
-            established best practices and industry standards. Big fan of
-            self-documenting code, functional programming, and "using the
-            platform."
+            Front-end (and increasingly full-stack) engineer with a passion for
+            building beautiful user interfaces and exceptional user experiences
+            while adhering to established best practices and industry standards.
+            A fan of self-documenting code, functional programming, and using the
+            platform.
           `,
         },
       ],
@@ -77,9 +77,9 @@ const resumeData: Resume = {
                   },
                   {
                     content: oneLine`
-                      Completely rewrite existing food ordering site using
+                      Rewrite existing food ordering site using
                       Next.js and TypeScript, with static pages for each
-                      restaurant.
+                      restaurant. (livebetterphl.com)
                     `,
                     style: "normal",
                   },

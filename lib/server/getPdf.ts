@@ -71,8 +71,10 @@ export const getPdf = async (url: string) => {
     format: "a4",
     displayHeaderFooter: false,
     margin: {
-      top: 92,
-      bottom: 92,
+      top: 75,
+      bottom: 75,
+      left: 70,
+      right: 70,
     },
   });
 
