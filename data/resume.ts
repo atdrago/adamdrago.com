@@ -98,8 +98,8 @@ const resumeData: Resume = {
         {
           kind: "section",
           content: {
-            heading: "Staff Engineer, Schedule Engine / HomeX",
-            subheading: "Remote — 1/2018 to 11/2021",
+            heading: "Staff Software Architect, Schedule Engine / HomeX",
+            subheading: "Remote — 12/2017 to 11/2021",
             items: [
               {
                 kind: "list",
