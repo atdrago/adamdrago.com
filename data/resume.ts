@@ -137,8 +137,8 @@ const resumeData: Resume = {
                   },
                   {
                     content: oneLine`
-                      Build and maintain shared ESLint config used by front
-                      -end projects across the company.
+                      Build and maintain shared ESLint config used by front-end
+                      projects across the company.
                     `,
                     style: "normal",
                   },
