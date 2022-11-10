@@ -57,6 +57,24 @@ const resumeData: Resume = {
         {
           kind: "section",
           content: {
+            heading: "Software Engineer, Block, Inc.",
+            subheading: "Remote — Starting 11/2022",
+            items: [
+              {
+                kind: "list",
+                items: [
+                  {
+                    content: oneLine`More info coming soon! 🎉`,
+                    style: "normal",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        {
+          kind: "section",
+          content: {
             heading: "Head of Development, Live Better PHL",
             subheading: "Remote — 6/2022 to 9/2022",
             items: [
