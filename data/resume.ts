@@ -3,7 +3,7 @@ import { oneLine } from "common-tags";
 import type { Resume } from "types";
 
 const resumeData: Resume = {
-  updatedAt: "9/19/22",
+  updatedAt: "11/10/22",
   sections: [
     {
       heading: "Profile",
