@@ -1,6 +1,6 @@
-import { Code, Heart, Peace } from "phosphor-react";
-
 import { Header } from "components/Header";
+
+import { Code, Heart, Peace } from "./client";
 
 export default function ContactPage() {
   return (

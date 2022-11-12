@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Image, { ImageProps } from "next/image";
 
 type BackgroundImageProps = ImageProps & {
@@ -10,6 +11,10 @@ type BackgroundImageProps = ImageProps & {
    * Classes that adjust vertical position should go here
    */
   outerClassName?: string;
+  /**
+   * Which theme to show this image for
+   */
+  theme: "dark" | "light";
 };
 
 export const BackgroundImage = ({
@@ -19,14 +24,21 @@ export const BackgroundImage = ({
   innerClassName = "",
   outerClassName = "",
   isVisible,
+  theme,
   width,
   ...imageProps
 }: BackgroundImageProps) => {
   return (
     <div
-      className={`absolute w-full overflow-hidden pointer-events-none -z-10 print:hidden ${
-        isVisible ? "transition-in" : "transition-out"
-      } ${outerClassName}`}
+      className={classNames(
+        `absolute w-full overflow-hidden pointer-events-none -z-10 print:hidden ${
+          isVisible ? "transition-in" : "transition-out"
+        } ${outerClassName}`,
+        {
+          "hidden dark:block": theme === "dark",
+          "dark:hidden": theme === "light",
+        }
+      )}
       style={{ height }}
     >
       <div

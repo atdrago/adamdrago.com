@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { FileArrowDown } from "phosphor-react";
 
 import { Header } from "components/Header";
 import resumeData from "data/resume";
+
+import { FileArrowDown } from "./client";
 
 const updatedAt = Intl.DateTimeFormat([], { dateStyle: "full" })
   .format(new Date(resumeData.updatedAt))
@@ -19,16 +20,20 @@ export default function WorkPage() {
           <p className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 px-3 py-2 text-lg transition-colors">
             The following is my resumé, updated as of <b>{updatedAt}</b>. It is
             also available to{" "}
-            <Link href={`/adam-drago-resume.pdf?date=${updatedAtSearchParam}`}>
-              <a download="adam-drago-resume.pdf" target="_blank">
-                download as a PDF
-              </a>
+            <Link
+              download="adam-drago-resume.pdf"
+              target="_blank"
+              href={`/adam-drago-resume.pdf?date=${updatedAtSearchParam}`}
+            >
+              download as a PDF
             </Link>{" "}
             or{" "}
-            <Link href={`/adam-drago-resume.txt?date=${updatedAtSearchParam}`}>
-              <a download="adam-drago-resume.txt" target="_blank">
-                text file
-              </a>
+            <Link
+              download="adam-drago-resume.txt"
+              target="_blank"
+              href={`/adam-drago-resume.txt?date=${updatedAtSearchParam}`}
+            >
+              text file
             </Link>{" "}
             if that is more convenient.
           </p>
@@ -104,23 +109,21 @@ export default function WorkPage() {
             Downloads
           </h2>
           <div className="flex items-start gap-6">
-            <Link href={`/adam-drago-resume.txt?date=${updatedAtSearchParam}`}>
-              <a
-                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
-                download="adam-drago-resume.txt"
-                target="_blank"
-              >
-                <FileArrowDown size={32} /> TXT
-              </a>
+            <Link
+              className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
+              download="adam-drago-resume.txt"
+              target="_blank"
+              href={`/adam-drago-resume.txt?date=${updatedAtSearchParam}`}
+            >
+              <FileArrowDown size={32} /> TXT
             </Link>
-            <Link href={`/adam-drago-resume.pdf?date=${updatedAtSearchParam}`}>
-              <a
-                className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
-                download="adam-drago-resume.pdf"
-                target="_blank"
-              >
-                <FileArrowDown size={32} /> PDF
-              </a>
+            <Link
+              className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
+              download="adam-drago-resume.pdf"
+              target="_blank"
+              href={`/adam-drago-resume.pdf?date=${updatedAtSearchParam}`}
+            >
+              <FileArrowDown size={32} /> PDF
             </Link>
           </div>
         </section>

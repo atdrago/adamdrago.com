@@ -1,6 +1,5 @@
 module.exports = {
-  content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
-  darkMode: "class",
+  content: ["./app/**/*.tsx", "./components/**/*.tsx", "./pages/**/*.tsx"],
   theme: {
     fontFamily: {
       serif: [
