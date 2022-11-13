@@ -2,7 +2,7 @@ import { spawn, spawnSync } from "child_process";
 import { writeFile } from "fs";
 import { resolve } from "path";
 
-import { getPdf } from "../lib/server/getPdf.js";
+import { getPdf } from "./getPdf.js";
 
 const url = "http://localhost:3000/work";
 

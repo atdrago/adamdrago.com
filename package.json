@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next out && next dev",
-    "build": "rm -rf .next out && next build && npm run build-resume",
+    "dev": "rm -rf .next && next dev",
+    "build": "rm -rf .next && next build && npm run build-resume",
     "start": "next start",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint --fix .",
@@ -14,10 +14,8 @@
   },
   "dependencies": {
     "@sparticuz/chromium": "^108.0.1",
-    "chrome-aws-lambda": "^10.1.0",
     "classnames": "^2.3.1",
     "common-tags": "^1.8.2",
-    "cookies-next": "^2.1.1",
     "next": "^13.0.3",
     "phosphor-react": "^1.4.1",
     "puppeteer-core": "^10.4.0",
