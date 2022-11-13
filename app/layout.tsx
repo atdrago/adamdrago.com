@@ -1,7 +1,7 @@
-import "app/styles/globals.css";
+import "app/(lib)/styles/globals.css";
 
-import { Backgrounds } from "app/components/Backgrounds";
-import { Header } from "app/components/Header";
+import { Backgrounds } from "app/(lib)/components/Backgrounds";
+import { Header } from "app/(lib)/components/Header";
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (

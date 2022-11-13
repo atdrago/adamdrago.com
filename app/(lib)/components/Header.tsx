@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Envelope, Link as LinkIcon, Phone } from "phosphor-react";
 
-import { GitHubLogo } from "app/components/GitHubLogo";
-import { HeaderLink } from "app/components/HeaderLink";
+import { GitHubLogo } from "app/(lib)/components/GitHubLogo";
+import { HeaderLink } from "app/(lib)/components/HeaderLink";
 
 const routes = [
   {
