@@ -16,7 +16,7 @@ const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
 };
 
 export const getOptions = async () => {
-  if (process.env.CI || process.env.VERCEL) {
+  if (process.env.CI || process.env.VERCEL || process.env.VERCEL_ENV) {
     // In CI, use the path of chrome-aws-lambda and its args
     return {
       args: chrome.args,
