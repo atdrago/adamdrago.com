@@ -35,8 +35,8 @@ export const BackgroundImage = ({
           isVisible ? "transition-in" : "transition-out"
         } ${outerClassName}`,
         {
-          "hidden dark:block": theme === "dark",
-          "dark:hidden": theme === "light",
+          "invisible dark:visible": theme === "dark",
+          "dark:visible": theme === "light",
         }
       )}
       style={{ height }}
@@ -46,10 +46,12 @@ export const BackgroundImage = ({
         style={{ height, width }}
       >
         <Image
+          className="border-0 bg-transparent"
           alt={alt}
           aria-hidden={ariaHidden}
           height={height}
           width={width}
+          style={{ height, width }}
           {...imageProps}
         />
       </div>

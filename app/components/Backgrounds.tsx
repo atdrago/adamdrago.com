@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import { BackgroundImage } from "components/BackgroundImage";
+import { BackgroundImage } from "app/components/BackgroundImage";
 import cherryTreeDarkImage from "public/static/cherry-tree-dark.jpg";
 import cherryTreeImage from "public/static/cherry-tree.jpg";
 import coffeeMugImage from "public/static/coffee-mug.png";
