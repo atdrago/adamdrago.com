@@ -1,7 +1,8 @@
-import type { GetServerSideProps } from "next";
+import { writeFile } from "fs";
+import { resolve } from "path";
 
-import resume from "data/resume";
-import type { ResumeItem } from "types";
+import resume from "../data/resume.js";
+import type { ResumeItem } from "../types";
 
 const getTextForItem = (item: ResumeItem, level: number) => {
   const { kind } = item;
@@ -52,33 +53,27 @@ const getTextForItem = (item: ResumeItem, level: number) => {
   }
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const result =
-    "Adam Drago\n" +
-    resume.sections
-      .map(
-        ({ heading, items }) =>
-          `\n${heading}\n\n${items?.reduce(
-            (acc, item) => acc + getTextForItem(item, 1),
-            ""
-          )}`
-      )
-      .join("");
+const result =
+  "Adam Drago\n" +
+  resume.sections
+    .map(
+      ({ heading, items }) =>
+        `\n${heading}\n\n${items?.reduce(
+          (acc, item) => acc + getTextForItem(item, 1),
+          ""
+        )}`
+    )
+    .join("");
 
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.setHeader("Content-Type", "text/plain; charset=utf-8");
-  res.setHeader(
-    "Content-Disposition",
-    `attachment; filename="adam-drago-resume.txt"`
-  );
-  res.write(result);
-  res.end();
-
-  return {
-    props: {},
-  };
-};
-
-export default function ResumeTxt(): null {
-  return null;
-}
+writeFile(
+  resolve(process.cwd(), "public", "adam-drago-resume.txt"),
+  result,
+  (err: any) => {
+    if (err) {
+      console.error(`writing resume txt failed ${err}`);
+      process.exit(1);
+    }
+    console.log("writing resume txt done\n");
+    process.exit(0);
+  }
+);

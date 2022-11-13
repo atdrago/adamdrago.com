@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next && next dev",
-    "build": "rm -rf .next && next build && npm run build-resume",
+    "build": "rm -rf .next && next build && npm run build-resume-pdf && npm run build-resume-txt",
     "start": "next start",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint --fix .",
     "format": "npx prettier --write .",
     "format:check": "npx prettier --check .",
-    "build-resume": "tsm ./scripts/buildResumePdf.mts --esModuleInterop --baseUrl ./"
+    "build-resume-pdf": "tsm ./scripts/buildResumePdf.mts",
+    "build-resume-txt": "tsm ./scripts/buildResumeTxt.mts"
   },
   "dependencies": {
     "@sparticuz/chromium": "^108.0.1",
