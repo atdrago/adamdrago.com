@@ -5,7 +5,7 @@
  * Also, @see https://github.com/berstend/puppeteer-extra/issues/93#issuecomment-712364816
  */
 
-import chrome from "chrome-aws-lambda";
+import chrome from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
 
 // Path to chrome executable on different platforms
@@ -16,9 +16,7 @@ const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
 };
 
 export const getOptions = async () => {
-  console.log(process.env.CI, process.env.VERCEL, process.env.VERCEL_ENV);
-
-  if (process.env.CI || process.env.VERCEL || process.env.VERCEL_ENV) {
+  if (process.env.CI || process.env.VERCEL) {
     // In CI, use the path of chrome-aws-lambda and its args
     return {
       args: chrome.args,
