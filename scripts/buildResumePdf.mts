@@ -6,12 +6,6 @@ import { getPdf } from "../lib/server/getPdf.js";
 
 const url = "http://localhost:3000/work";
 
-const buildChild = spawnSync("npm", ["run", "build"]);
-
-if (buildChild.status !== 0) {
-  throw new Error("Build failed");
-}
-
 const serverChild = spawn("npm", ["start"]);
 
 serverChild.stdout.on("data", (data) => {
@@ -27,6 +21,10 @@ serverChild.stdout.on("data", (data) => {
         resolve(process.cwd(), "public", "adam-drago-resume.pdf"),
         pdf,
         (err: any) => {
+          serverChild.stdout.destroy();
+          serverChild.stderr.destroy();
+          serverChild.kill();
+
           if (err) {
             console.error(`writing resume pdf failed ${err}`);
             process.exit(1);

@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next out && next dev",
-    "build": "rm -rf .next out && next build",
+    "build": "rm -rf .next out && next build && npm run build-resume",
     "start": "next start",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint --fix .",
     "format": "npx prettier --write .",
     "format:check": "npx prettier --check .",
-    "resume": "tsm ./scripts/createResumePdf.mts --esModuleInterop --baseUrl ./"
+    "build-resume": "tsm ./scripts/buildResumePdf.mts --esModuleInterop --baseUrl ./"
   },
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",

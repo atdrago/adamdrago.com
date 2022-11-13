@@ -16,22 +16,21 @@ const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
 };
 
 export const getOptions = async () => {
-  // During development use local chrome executable
-  // TODO: switch process.env.NODE_ENV to something that works locally
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.CI || process.env.VERCEL) {
+    // In CI, use the path of chrome-aws-lambda and its args
     return {
-      args: [],
-      executablePath:
-        chromeExecutables[process.platform] || chromeExecutables.linux,
-      headless: true,
+      args: chrome.args,
+      executablePath: await chrome.executablePath,
+      headless: chrome.headless,
     };
   }
 
-  // Else, use the path of chrome-aws-lambda and its args
+  // During development use local chrome executable
   return {
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
-    headless: chrome.headless,
+    args: [],
+    executablePath:
+      chromeExecutables[process.platform] || chromeExecutables.linux,
+    headless: true,
   };
 };
 
