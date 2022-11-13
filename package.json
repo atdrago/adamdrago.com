@@ -9,7 +9,8 @@
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint --fix .",
     "format": "npx prettier --write .",
-    "format:check": "npx prettier --check ."
+    "format:check": "npx prettier --check .",
+    "resume": "tsm ./scripts/createResumePdf.mts --esModuleInterop --baseUrl ./"
   },
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",
@@ -41,10 +42,11 @@
     "prettier": "2.7.1",
     "prettier-plugin-import-sort": "^0.0.7",
     "tailwindcss": "^3.1.8",
+    "tsm": "^2.2.2",
     "typescript": "4.8.2"
   },
   "importSort": {
-    ".js, .jsx, .ts, .tsx, .mdx": {
+    ".js, .jsx, .ts, .tsx, .mdx, .mts": {
       "style": "atdrago",
       "parser": "typescript"
     }

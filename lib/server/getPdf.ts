@@ -17,6 +17,7 @@ const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
 
 export const getOptions = async () => {
   // During development use local chrome executable
+  // TODO: switch process.env.NODE_ENV to something that works locally
   if (process.env.NODE_ENV === "development") {
     return {
       args: [],
@@ -62,7 +63,7 @@ export const getPdf = async (url: string) => {
 
   // Visit URL and wait until everything is loaded (available events: load,
   // domcontentloaded, networkidle0, networkidle2)
-  await page.goto(url, { waitUntil: "networkidle2", timeout: 2000 });
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 20000 });
 
   // Tell Chrome to generate the PDF
   await page.emulateMediaType("print");
