@@ -46,7 +46,7 @@ export const Header = () => {
             </li>
           ))}
         </ul>
-        <ul className="flex print:flex-col gap-2">
+        <ul className="flex print:flex-col gap-2 mt-1">
           <li className="hidden print:inline">
             <Link
               className="

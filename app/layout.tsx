@@ -1,6 +1,7 @@
 import "styles/globals.css";
 
 import { Backgrounds } from "components/Backgrounds";
+import { Header } from "components/Header";
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
@@ -12,8 +13,10 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
             absolute left-0 right-0 top-2/3 print:top-0
             mx-auto px-8
             font-serif max-w-prose
+            flex flex-col gap-2
           `}
         >
+          <Header />
           {children}
         </div>
       </body>
