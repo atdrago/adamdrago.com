@@ -36,7 +36,7 @@ export const BackgroundImage = ({
         } ${outerClassName}`,
         {
           "invisible dark:visible": theme === "dark",
-          "dark:visible": theme === "light",
+          "visible dark:invisible": theme === "light",
         }
       )}
       style={{ height }}
