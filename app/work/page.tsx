@@ -1,8 +1,7 @@
 import Link from "next/link";
+import { FileArrowDown } from "phosphor-react";
 
 import resumeData from "data/resume";
-
-import { FileArrowDown } from "./client";
 
 const updatedAt = Intl.DateTimeFormat([], { dateStyle: "full" })
   .format(new Date(resumeData.updatedAt))

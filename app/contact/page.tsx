@@ -1,4 +1,4 @@
-import { Code, Heart, Peace } from "./client";
+import { Code, Heart, Peace } from "phosphor-react";
 
 export default function ContactPage() {
   return (

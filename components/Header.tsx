@@ -1,10 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Envelope, Link as LinkIcon, Phone } from "phosphor-react";
 
 import { GitHubLogo } from "components/GitHubLogo";
+import { HeaderLink } from "components/HeaderLink";
 
 const routes = [
   {
@@ -22,8 +20,6 @@ const routes = [
 ];
 
 export const Header = () => {
-  const pathname = usePathname();
-
   return (
     <header className="flex flex-col gap-3 lg:gap-4 text-stone-900 dark:text-stone-100 transition-colors">
       <h1 className="text-5xl lg:text-7xl print:text-3xl font-bold">
@@ -33,16 +29,7 @@ export const Header = () => {
         <ul className="flex gap-4 lg:gap-8 print:hidden">
           {routes.map(({ name, href }) => (
             <li key={href}>
-              <Link
-                className={
-                  pathname === href
-                    ? "text-3xl lg:text-4xl font-bold"
-                    : "text-3xl lg:text-4xl"
-                }
-                href={href}
-              >
-                {name}
-              </Link>
+              <HeaderLink href={href}>{name}</HeaderLink>
             </li>
           ))}
         </ul>
