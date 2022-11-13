@@ -7,8 +7,6 @@ const updatedAt = Intl.DateTimeFormat([], { dateStyle: "full" })
   .format(new Date(resumeData.updatedAt))
   .toString();
 
-const updatedAtSearchParam = resumeData.updatedAt.replace(/\//g, "-");
-
 export default function WorkPage() {
   return (
     <main className="prose prose-lg print:prose-sm dark:prose-invert">
@@ -33,7 +31,7 @@ export default function WorkPage() {
           <Link
             download="adam-drago-resume.txt"
             target="_blank"
-            href={`/adam-drago-resume.txt?date=${updatedAtSearchParam}`}
+            href={`/adam-drago-resume.txt`}
           >
             text file
           </Link>{" "}
@@ -113,7 +111,7 @@ export default function WorkPage() {
             className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
             download="adam-drago-resume.txt"
             target="_blank"
-            href={`/adam-drago-resume.txt?date=${updatedAtSearchParam}`}
+            href={`/adam-drago-resume.txt`}
           >
             <FileArrowDown size={32} /> TXT
           </Link>
