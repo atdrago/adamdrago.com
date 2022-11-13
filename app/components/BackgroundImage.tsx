@@ -35,8 +35,8 @@ export const BackgroundImage = ({
           isVisible ? "transition-in" : "transition-out"
         } ${outerClassName}`,
         {
-          "invisible dark:visible": theme === "dark",
-          "visible dark:invisible": theme === "light",
+          "hidden dark:block": theme === "dark",
+          "block dark:hidden": theme === "light",
         }
       )}
       style={{ height }}
