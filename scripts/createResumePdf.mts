@@ -24,7 +24,7 @@ serverChild.stdout.on("data", (data) => {
       console.log("writing resume pdf\n");
 
       writeFile(
-        resolve(process.cwd(), "public", "resume.pdf"),
+        resolve(process.cwd(), "public", "adam-drago-resume.pdf"),
         pdf,
         (err: any) => {
           if (err) {

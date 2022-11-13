@@ -23,7 +23,7 @@ export default function WorkPage() {
             <Link
               download="adam-drago-resume.pdf"
               target="_blank"
-              href={`/adam-drago-resume.pdf?date=${updatedAtSearchParam}`}
+              href={`/adam-drago-resume.pdf`}
             >
               download as a PDF
             </Link>{" "}
@@ -121,7 +121,7 @@ export default function WorkPage() {
               className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
               download="adam-drago-resume.pdf"
               target="_blank"
-              href={`/adam-drago-resume.pdf?date=${updatedAtSearchParam}`}
+              href={`/adam-drago-resume.pdf`}
             >
               <FileArrowDown size={32} /> PDF
             </Link>
