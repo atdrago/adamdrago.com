@@ -18,7 +18,7 @@ export default function WorkPage() {
             px-3 py-2 text-lg transition-colors
           "
         >
-          The following is my resumé, updated as of <b>{updatedAt}</b>. It is
+          The following is my resume, updated as of <b>{updatedAt}</b>. It is
           also available to{" "}
           <Link
             download="adam-drago-resume.pdf"
