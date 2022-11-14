@@ -53,6 +53,7 @@ export const BackgroundImage = ({
           height={height}
           width={width}
           priority={true}
+          placeholder="blur"
           {...imageProps}
         />
       </div>
