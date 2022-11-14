@@ -31,12 +31,14 @@ export const BackgroundImage = ({
   return (
     <div
       className={classNames(
-        `absolute w-full overflow-hidden pointer-events-none -z-10 print:hidden ${
-          isVisible ? "transition-in" : "transition-out"
-        } ${outerClassName}`,
+        `
+          absolute w-full overflow-hidden pointer-events-none
+          -z-10 print:hidden ${outerClassName}
+        `,
         {
-          "hidden dark:block": theme === "dark",
-          "block dark:hidden": theme === "light",
+          "transition-out dark:transition-in": theme === "dark" && isVisible,
+          "transition-in dark:transition-out": theme === "light" && isVisible,
+          "transition-out": !isVisible,
         }
       )}
       style={{ height }}
@@ -46,12 +48,11 @@ export const BackgroundImage = ({
         style={{ height, width }}
       >
         <Image
-          className="border-0 bg-transparent"
           alt={alt}
           aria-hidden={ariaHidden}
           height={height}
           width={width}
-          style={{ height, width }}
+          priority={true}
           {...imageProps}
         />
       </div>
