@@ -8,10 +8,12 @@ const url = "http://localhost:3000/work";
 
 const serverChild = spawn("npm", ["start"]);
 
+const STD_OUT_READY_PREFIX = "- ready";
+
 serverChild.stdout.on("data", (data) => {
   console.log(`stdout:\n${data}`);
 
-  if (`${data}`.startsWith("ready")) {
+  if (`${data}`.startsWith(STD_OUT_READY_PREFIX)) {
     console.log("building resume pdf\n");
 
     getPdf(url).then((pdf) => {
