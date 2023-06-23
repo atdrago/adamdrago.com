@@ -36,7 +36,7 @@
     "@typescript-eslint/parser": "^5.35.1",
     "autoprefixer": "^10.4.13",
     "eslint": "8.23.0",
-    "eslint-config-next": "^13.4.3",
+    "eslint-config-next": "^13.4.7",
     "eslint-config-prettier": "^8.5.0",
     "import-sort-style-atdrago": "^0.1.7",
     "patch-package": "^7.0.0",
