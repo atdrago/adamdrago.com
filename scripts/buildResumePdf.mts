@@ -4,7 +4,7 @@ import { resolve } from "path";
 
 import { getPdf } from "./getPdf.js";
 
-const url = "http://localhost:3000/work";
+const url = "http://0.0.0.0:3000/work";
 
 const serverChild = spawn("npm", ["start"]);
 
