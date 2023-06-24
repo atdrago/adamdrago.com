@@ -91,6 +91,7 @@ export const getPdf = async (url: string, verbose = false) => {
 
   // Close chrome instance
   log(verbose, "Closing chrome...");
+  await page.close();
   await browser.close();
 
   log(verbose, "Done");
