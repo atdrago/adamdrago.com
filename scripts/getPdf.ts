@@ -71,7 +71,7 @@ export const getPdf = async (url: string, verbose = false) => {
 
   // Visit URL and wait until everything is loaded (available events: load,
   // domcontentloaded, networkidle0, networkidle2)
-  log(verbose, `Visiting ${url}...`);
+  log(verbose, `Visiting "${url}" ...`);
   await page.goto(url, { waitUntil: "networkidle2", timeout: 20000 });
 
   // Tell Chrome to generate the PDF
@@ -89,9 +89,10 @@ export const getPdf = async (url: string, verbose = false) => {
     },
   });
 
-  // Close chrome instance
-  log(verbose, "Closing chrome...");
+  log(verbose, "Closing page...");
   await page.close();
+
+  log(verbose, "Closing chrome...");
   await browser.close();
 
   log(verbose, "Done");
