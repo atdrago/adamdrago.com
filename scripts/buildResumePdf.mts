@@ -4,7 +4,7 @@ import { resolve } from "path";
 
 import { getPdf } from "./getPdf.js";
 
-const url = "http://localhost:3000/work";
+const url = "http://0.0.0.0:3000/work";
 
 const serverChild = spawn("npm", ["start"]);
 
@@ -16,7 +16,7 @@ serverChild.stdout.on("data", (data) => {
   if (`${data}`.startsWith(STD_OUT_READY_PREFIX)) {
     console.log("building resume pdf\n");
 
-    getPdf(url).then((pdf) => {
+    getPdf(url, true).then((pdf) => {
       console.log("writing resume pdf\n");
 
       writeFile(
