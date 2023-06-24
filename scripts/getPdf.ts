@@ -47,8 +47,8 @@ const courierNewItalicPath = `${cdnFontsPath}/${encodeURIComponent(
   "Courier New Italic.ttf"
 )}`;
 
-function log(verbose: boolean, ...args: any) {
-  if (verbose) {
+function log(shouldLog: boolean, ...args: any) {
+  if (shouldLog) {
     // eslint-disable-next-line no-console
     console.log(...args);
   }
@@ -89,8 +89,16 @@ export const getPdf = async (url: string, verbose = false) => {
     },
   });
 
-  log(verbose, "Closing page...");
-  await page.close();
+  for (const browserPage of await browser.pages()) {
+    const pageUrl = await browserPage.url();
+    log(verbose, `Closing page "${pageUrl}"...`);
+
+    try {
+      await browserPage.close();
+    } catch (err) {
+      log(true, `Error closing page "${pageUrl}"`, err);
+    }
+  }
 
   log(verbose, "Closing chrome...");
   await browser.close();
