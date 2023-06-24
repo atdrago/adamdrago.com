@@ -16,7 +16,7 @@ serverChild.stdout.on("data", (data) => {
   if (`${data}`.startsWith(STD_OUT_READY_PREFIX)) {
     console.log("building resume pdf\n");
 
-    getPdf(url).then((pdf) => {
+    getPdf(url, true).then((pdf) => {
       console.log("writing resume pdf\n");
 
       writeFile(

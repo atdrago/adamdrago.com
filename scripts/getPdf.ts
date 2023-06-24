@@ -47,14 +47,23 @@ const courierNewItalicPath = `${cdnFontsPath}/${encodeURIComponent(
   "Courier New Italic.ttf"
 )}`;
 
-export const getPdf = async (url: string) => {
+function log(verbose: boolean, ...args: any) {
+  if (verbose) {
+    // eslint-disable-next-line no-console
+    console.log(...args);
+  }
+}
+
+export const getPdf = async (url: string, verbose = false) => {
   // Load the fonts that are used on the site. This must be done before
   // puppeteer.launch(...) is called below.
+  log(verbose, "Loading fonts...");
   await chrome.font(courierNewPath);
   await chrome.font(courierNewBoldPath);
   await chrome.font(courierNewItalicPath);
 
   // Start headless chrome instance
+  log(verbose, "Starting chrome...");
   const options = await getOptions();
   const browser = await puppeteer.launch(options);
 
@@ -62,11 +71,13 @@ export const getPdf = async (url: string) => {
 
   // Visit URL and wait until everything is loaded (available events: load,
   // domcontentloaded, networkidle0, networkidle2)
+  log(verbose, `Visiting ${url}...`);
   await page.goto(url, { waitUntil: "networkidle2", timeout: 20000 });
 
   // Tell Chrome to generate the PDF
   await page.emulateMediaType("print");
 
+  log(verbose, "Generating PDF...");
   const buffer = await page.pdf({
     format: "a4",
     displayHeaderFooter: false,
@@ -79,7 +90,10 @@ export const getPdf = async (url: string) => {
   });
 
   // Close chrome instance
+  log(verbose, "Closing chrome...");
   await browser.close();
+
+  log(verbose, "Done");
 
   return buffer;
 };
