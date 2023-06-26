@@ -1,52 +1,25 @@
-import { spawn } from "child_process";
-import { writeFile } from "fs";
+import { writeFile } from "fs/promises";
 import { resolve } from "path";
 
-import { getPdf } from "./getPdf.js";
+import { getPdf } from "./utils/getPdf.js";
+import { startNextServer } from "./utils/startNextServer.js";
 
-const url = "http://0.0.0.0:3000/work";
+const RESUME_URL = "http://0.0.0.0:3000/work";
 
-const serverChild = spawn("npm", ["start"]);
+try {
+  const cleanup = await startNextServer();
+  const pdf = await getPdf(RESUME_URL, true);
 
-const STD_OUT_READY_PREFIX = "- ready";
+  const outputPath = resolve(process.cwd(), "public", "adam-drago-resume.pdf");
 
-serverChild.stdout.on("data", (data) => {
-  console.log(`stdout:\n${data}`);
+  await writeFile(outputPath, pdf);
 
-  if (`${data}`.startsWith(STD_OUT_READY_PREFIX)) {
-    console.log("building resume pdf\n");
+  console.log("Resume PDF generated successfully.");
 
-    getPdf(url, true).then((pdf) => {
-      console.log("writing resume pdf\n");
+  cleanup();
 
-      writeFile(
-        resolve(process.cwd(), "public", "adam-drago-resume.pdf"),
-        pdf,
-        (err: any) => {
-          serverChild.stdout.destroy();
-          serverChild.stderr.destroy();
-          serverChild.kill();
-
-          if (err) {
-            console.error(`writing resume pdf failed ${err}`);
-            process.exit(1);
-          }
-          console.log("writing resume pdf done\n");
-          process.exit(0);
-        }
-      );
-    });
-  }
-});
-
-serverChild.stderr.on("data", (data) => {
-  console.error(`stderr: ${data}`);
-});
-
-serverChild.on("error", (error) => {
-  console.error(`error: ${error.message}`);
-});
-
-serverChild.on("close", (code) => {
-  console.log(`child process exited with code ${code}`);
-});
+  process.exit(0);
+} catch (error) {
+  console.error(`An error occurred: ${error.message}`);
+  process.exit(1);
+}
