@@ -40,18 +40,21 @@ export async function startNextServer(): Promise<() => void> {
 
     serviceChildProcess.stderr.on("data", (data) => {
       const errorMessage = data.toString();
+      // eslint-disable-next-line no-console
       console.error(`stderr: ${errorMessage}`);
       cleanup();
       reject(new Error(`Error encountered: ${errorMessage}`));
     });
 
     serviceChildProcess.on("error", (error) => {
+      // eslint-disable-next-line no-console
       console.error(`error: ${error.message}`);
       cleanup();
       reject(error);
     });
 
     serviceChildProcess.on("close", (code) => {
+      // eslint-disable-next-line no-console
       console.log(`child process exited with code ${code}`);
     });
   });
