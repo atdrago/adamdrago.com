@@ -6,7 +6,7 @@
  */
 
 import chrome from "@sparticuz/chromium";
-import puppeteer from "puppeteer-core";
+import puppeteer, { PuppeteerLaunchOptions } from "puppeteer-core";
 
 // Path to chrome executable on different platforms
 const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
@@ -15,12 +15,21 @@ const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
   darwin: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
 };
 
-export const getOptions = async () => {
+const cdnFontsPath =
+  "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts";
+
+const fonts = [
+  "Courier New.ttf",
+  "Courier New Bold.ttf",
+  "Courier New Italic.ttf",
+];
+
+const getOptions = async (): Promise<PuppeteerLaunchOptions> => {
   if (process.env.CI || process.env.VERCEL) {
     // In CI, use the path of chrome-aws-lambda and its args
     return {
       args: chrome.args,
-      executablePath: await chrome.executablePath,
+      executablePath: await chrome.executablePath(),
       headless: chrome.headless,
     };
   }
@@ -34,19 +43,6 @@ export const getOptions = async () => {
   };
 };
 
-const cdnFontsPath =
-  "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts";
-
-const courierNewPath = `${cdnFontsPath}/${encodeURIComponent(
-  "Courier New.ttf"
-)}`;
-const courierNewBoldPath = `${cdnFontsPath}/${encodeURIComponent(
-  "Courier New Bold.ttf"
-)}`;
-const courierNewItalicPath = `${cdnFontsPath}/${encodeURIComponent(
-  "Courier New Italic.ttf"
-)}`;
-
 function log(shouldLog: boolean, ...args: any) {
   if (shouldLog) {
     // eslint-disable-next-line no-console
@@ -55,29 +51,40 @@ function log(shouldLog: boolean, ...args: any) {
 }
 
 export const getPdf = async (url: string, verbose = false) => {
+  log(true, "\nBuilding PDF...");
+
   // Load the fonts that are used on the site. This must be done before
   // puppeteer.launch(...) is called below.
   log(verbose, "Loading fonts...");
-  await chrome.font(courierNewPath);
-  await chrome.font(courierNewBoldPath);
-  await chrome.font(courierNewItalicPath);
+
+  for (const font of fonts) {
+    await chrome.font(`${cdnFontsPath}/${encodeURIComponent(font)}`);
+  }
+
+  // Fixes issue where calling `chrome.close()` hangs. See:
+  // https://github.com/Sparticuz/chromium/issues/85#issuecomment-1527692751
+  // This also turns off WebGL and may have other side effects related to
+  // graphics, but also may speed up initial browser launch time.
+  // An alternative solution to chrome hanging is to close all windows before
+  // closing the browser. See:
+  // https://github.com/puppeteer/puppeteer/issues/7922#issuecomment-1549052725
+  chrome.setGraphicsMode = false;
 
   // Start headless chrome instance
   log(verbose, "Starting chrome...");
   const options = await getOptions();
   const browser = await puppeteer.launch(options);
-
   const page = await browser.newPage();
 
   // Visit URL and wait until everything is loaded (available events: load,
   // domcontentloaded, networkidle0, networkidle2)
-  log(verbose, `Visiting "${url}" ...`);
+  log(verbose, `Visiting "${url}"...`);
   await page.goto(url, { waitUntil: "networkidle2", timeout: 20000 });
 
-  // Tell Chrome to generate the PDF
   await page.emulateMediaType("print");
 
   log(verbose, "Generating PDF...");
+  // Tell Chrome to generate the PDF
   const buffer = await page.pdf({
     format: "a4",
     displayHeaderFooter: false,
@@ -89,21 +96,10 @@ export const getPdf = async (url: string, verbose = false) => {
     },
   });
 
-  for (const browserPage of await browser.pages()) {
-    const pageUrl = await browserPage.url();
-    log(verbose, `Closing page "${pageUrl}"...`);
-
-    try {
-      await browserPage.close();
-    } catch (err) {
-      log(true, `Error closing page "${pageUrl}"`, err);
-    }
-  }
-
   log(verbose, "Closing chrome...");
   await browser.close();
 
-  log(verbose, "Done");
+  log(true, "Done building PDF!");
 
   return buffer;
 };
