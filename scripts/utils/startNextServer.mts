@@ -34,7 +34,11 @@ export async function startNextServer(): Promise<{
 
       if (serverReadyMatch) {
         isServerReady = true;
-        serverUrl = serverReadyMatch[2];
+        serverUrl = serverReadyMatch[1];
+
+        if (!serverUrl.startsWith("http")) {
+          serverUrl = `http://${serverUrl}`;
+        }
       }
 
       if (output.includes("Loaded env from")) {
