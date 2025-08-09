@@ -2,12 +2,16 @@ import { spawn } from "child_process";
 
 const TIMEOUT_DURATION = 30000; // 30 seconds timeout
 
-export async function startNextServer(): Promise<() => void> {
+export async function startNextServer(): Promise<{
+  cleanup: () => void;
+  url: string | undefined;
+}> {
   const serviceChildProcess = spawn("npm", ["start"]);
 
   return new Promise((resolve, reject) => {
     let isServerReady = false;
     let isEnvReady = false;
+    let serverUrl: string | undefined;
 
     const timeoutId = setTimeout(() => {
       cleanup();
@@ -22,10 +26,15 @@ export async function startNextServer(): Promise<() => void> {
     }
 
     serviceChildProcess.stdout.on("data", (data) => {
-      const output = data.toString();
+      const output: string = data.toString();
 
-      if (output.startsWith("- ready started server on")) {
+      const serverReadyMatch = output.match(
+        /- ready started server on ([^\s,]+), url: (.+)/
+      );
+
+      if (serverReadyMatch) {
         isServerReady = true;
+        serverUrl = serverReadyMatch[2];
       }
 
       if (output.includes("Loaded env from")) {
@@ -34,7 +43,11 @@ export async function startNextServer(): Promise<() => void> {
 
       if (isServerReady && isEnvReady) {
         clearTimeout(timeoutId);
-        resolve(cleanup);
+        resolve({
+          cleanup,
+          // url: "https://adamdrago.com/work",
+          url: serverUrl,
+        });
       }
     });
 

@@ -6,7 +6,8 @@
  */
 
 import chrome from "@sparticuz/chromium";
-import puppeteer, { PuppeteerLaunchOptions } from "puppeteer-core";
+import puppeteer from "puppeteer-core";
+import type { LaunchOptions } from "puppeteer-core";
 
 // Path to chrome executable on different platforms
 const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
@@ -24,15 +25,17 @@ const fonts = [
   "Courier New Italic.ttf",
 ];
 
-const getOptions = async (): Promise<PuppeteerLaunchOptions> => {
+const getOptions = async (): Promise<LaunchOptions> => {
   if (process.env.CI || process.env.VERCEL) {
     // In CI, use the path of chrome-aws-lambda and its args
     return {
       args: chrome.args,
       executablePath: await chrome.executablePath(),
-      headless: chrome.headless,
+      headless: true,
     };
   }
+
+  console.log({ platform: process.platform });
 
   // During development use local chrome executable
   return {
@@ -79,6 +82,7 @@ export const getPdf = async (url: string, verbose = false) => {
   // Visit URL and wait until everything is loaded (available events: load,
   // domcontentloaded, networkidle0, networkidle2)
   log(verbose, `Visiting "${url}"...`);
+
   await page.goto(url, { waitUntil: "networkidle2", timeout: 20000 });
 
   await page.emulateMediaType("print");

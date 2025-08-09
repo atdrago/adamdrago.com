@@ -1,7 +1,7 @@
 import { writeFile } from "fs";
 import { resolve } from "path";
 
-import resume from "../app/(lib)/data/resume.js";
+import resume from "../app/(lib)/data/resume.ts";
 import type { ResumeItem } from "../types";
 
 const getTextForItem = (item: ResumeItem, level: number) => {
