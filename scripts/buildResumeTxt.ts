@@ -35,13 +35,13 @@ const getTextForItem = (item: ResumeItem, level: number) => {
       let section =
         [content.heading, content.subheading, content.comment].reduce(
           (acc = "", str) => (str ? acc + `\t${str}\n` : acc),
-          ""
+          "",
         ) + "\n";
 
       if (content.items) {
         section += content.items.reduce(
           (acc, subItem) => acc + getTextForItem(subItem, level + 1),
-          ""
+          "",
         );
       }
 
@@ -61,8 +61,8 @@ const result =
       ({ heading, items }) =>
         `\n${heading}\n\n${items?.reduce(
           (acc, item) => acc + getTextForItem(item, 1),
-          ""
-        )}`
+          "",
+        )}`,
     )
     .join("");
 
@@ -77,5 +77,5 @@ writeFile(
 
     console.log("writing resume txt done\n");
     process.exit(0);
-  }
+  },
 );
