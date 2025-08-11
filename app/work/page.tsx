@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FileArrowDown } from "phosphor-react";
 
+import { FileArrowDownIcon } from "@phosphor-icons/react/dist/ssr";
 import resumeData from "app/(lib)/data/resume";
 
 const updatedAt = Intl.DateTimeFormat([], { dateStyle: "full" })
@@ -113,7 +113,7 @@ export default function WorkPage() {
             target="_blank"
             href={`/adam-drago-resume.txt`}
           >
-            <FileArrowDown size={32} /> TXT
+            <FileArrowDownIcon size={32} /> TXT
           </Link>
           <Link
             className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
@@ -121,7 +121,7 @@ export default function WorkPage() {
             target="_blank"
             href={`/adam-drago-resume.pdf`}
           >
-            <FileArrowDown size={32} /> PDF
+            <FileArrowDownIcon size={32} /> PDF
           </Link>
         </div>
       </section>
