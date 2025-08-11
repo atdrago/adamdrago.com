@@ -5,13 +5,13 @@
   "scripts": {
     "dev": "rm -rf .next && next dev",
     "build": "rm -rf .next && next build && npm run build-resume-pdf && npm run build-resume-txt",
-    "start": "next start --port 3000",
+    "start": "next start",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint --fix .",
     "format": "npx prettier --write .",
     "format:check": "npx prettier --check .",
-    "build-resume-pdf": "node ./scripts/buildResumePdf.mts",
-    "build-resume-txt": "node ./scripts/buildResumeTxt.mts",
+    "build-resume-pdf": "node ./scripts/buildResumePdf.mts --trace-deprecation",
+    "build-resume-txt": "node ./scripts/buildResumeTxt.mts --trace-deprecation",
     "postinstall": "patch-package"
   },
   "dependencies": {

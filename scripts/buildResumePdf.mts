@@ -6,6 +6,7 @@ import { startNextServer } from "./utils/startNextServer.mts";
 
 try {
   const { cleanup, url } = await startNextServer();
+  // const url = new URL("http://localhost:3000/").toString();
 
   if (!url) {
     throw new Error("Failed to start Next.js server or retrieve URL.");

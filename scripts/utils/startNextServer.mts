@@ -28,13 +28,16 @@ export async function startNextServer(): Promise<{
     serviceChildProcess.stdout.on("data", (data) => {
       const output: string = data.toString();
 
+      console.log(`stdout: ${output}`);
+
       const serverReadyMatch = output.match(
         /- ready started server on ([^\s,]+), url: (.+)/
       );
 
       if (serverReadyMatch) {
+        console.log(serverReadyMatch);
         isServerReady = true;
-        serverUrl = serverReadyMatch[1];
+        serverUrl = serverReadyMatch[2];
 
         if (!serverUrl.startsWith("http")) {
           serverUrl = `http://${serverUrl}`;
@@ -47,11 +50,12 @@ export async function startNextServer(): Promise<{
 
       if (isServerReady && isEnvReady) {
         clearTimeout(timeoutId);
-        resolve({
-          cleanup,
-          // url: "https://adamdrago.com/work",
-          url: serverUrl,
-        });
+        setTimeout(() => {
+          resolve({
+            cleanup,
+            url: serverUrl,
+          });
+        }, 10000); // Wait a bit to ensure server is fully ready
       }
     });
 
@@ -65,7 +69,7 @@ export async function startNextServer(): Promise<{
 
     serviceChildProcess.on("error", (error) => {
       // eslint-disable-next-line no-console
-      console.error(`error: ${error.message}`);
+      console.error(`error:`, error);
       cleanup();
       reject(error);
     });
