@@ -2,6 +2,7 @@
   "name": "adamdrago.com",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "rm -rf .next && next dev",
     "build": "rm -rf .next && next build && npm run build-resume-pdf && npm run build-resume-txt",
@@ -10,8 +11,8 @@
     "lint:fix": "eslint --fix .",
     "format": "npx prettier --write .",
     "format:check": "npx prettier --check .",
-    "build-resume-pdf": "node ./scripts/buildResumePdf.mts --trace-deprecation",
-    "build-resume-txt": "node ./scripts/buildResumeTxt.mts --trace-deprecation",
+    "build-resume-pdf": "node ./scripts/buildResumePdf.ts",
+    "build-resume-txt": "node ./scripts/buildResumeTxt.ts",
     "postinstall": "patch-package"
   },
   "dependencies": {

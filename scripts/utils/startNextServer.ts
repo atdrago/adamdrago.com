@@ -10,7 +10,6 @@ export async function startNextServer(): Promise<{
 
   return new Promise((resolve, reject) => {
     let isServerReady = false;
-    let isEnvReady = false;
     let serverUrl: string | undefined;
 
     const timeoutId = setTimeout(() => {
