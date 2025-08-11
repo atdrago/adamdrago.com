@@ -39,7 +39,7 @@ export const BackgroundImage = ({
           "transition-out dark:transition-in": theme === "dark" && isVisible,
           "transition-in dark:transition-out": theme === "light" && isVisible,
           "transition-out": !isVisible,
-        }
+        },
       )}
       style={{ height }}
     >
