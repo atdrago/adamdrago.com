@@ -1,4 +1,4 @@
-import { Code, Heart, Peace } from "phosphor-react";
+import { CodeIcon, HeartIcon, PeaceIcon } from "@phosphor-icons/react/dist/ssr";
 
 export default function ContactPage() {
   return (
@@ -10,9 +10,9 @@ export default function ContactPage() {
           any questions or inquiries. Thanks!
         </p>
         <p className="flex gap-2 text-stone-600 dark:text-stone-300">
-          <Peace alt="peace" weight="bold" height="28" width="28" />
-          <Heart alt="love" weight="bold" height="28" width="28" />
-          <Code alt="code" weight="bold" height="28" width="28" />
+          <PeaceIcon alt="peace" weight="bold" height="28" width="28" />
+          <HeartIcon alt="love" weight="bold" height="28" width="28" />
+          <CodeIcon alt="code" weight="bold" height="28" width="28" />
         </p>
       </section>
     </main>

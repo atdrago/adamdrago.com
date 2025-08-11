@@ -1,6 +1,10 @@
 import Link from "next/link";
-import { Envelope, Link as LinkIcon, Phone } from "phosphor-react";
 
+import {
+  EnvelopeIcon,
+  LinkIcon,
+  PhoneIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import { GitHubLogo } from "app/(lib)/components/GitHubLogo";
 import { HeaderLink } from "app/(lib)/components/HeaderLink";
 
@@ -76,7 +80,7 @@ export const Header = () => {
               rel="noreferrer noopener"
               href="mailto:atdrago+business@gmail.com"
             >
-              <Envelope className="h-7 w-7 print:h-5 print:w-5" />
+              <EnvelopeIcon className="h-7 w-7 print:h-5 print:w-5" />
               <span>atdrago@gmail.com</span>
             </Link>
           </li>
@@ -92,7 +96,7 @@ export const Header = () => {
               rel="noreferrer noopener"
               href="tel:16107623898"
             >
-              <Phone className="h-7 w-7 print:h-5 print:w-5" />
+              <PhoneIcon className="h-7 w-7 print:h-5 print:w-5" />
               <span>(610) 762-3898</span>
             </Link>
           </li>
