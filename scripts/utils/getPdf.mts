@@ -35,8 +35,6 @@ const getOptions = async (): Promise<LaunchOptions> => {
     };
   }
 
-  console.log({ platform: process.platform });
-
   // During development use local chrome executable
   return {
     args: [],
