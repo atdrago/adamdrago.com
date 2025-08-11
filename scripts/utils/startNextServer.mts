@@ -2,12 +2,16 @@ import { spawn } from "child_process";
 
 const TIMEOUT_DURATION = 30000; // 30 seconds timeout
 
-export async function startNextServer(): Promise<() => void> {
+export async function startNextServer(): Promise<{
+  cleanup: () => void;
+  url: string | undefined;
+}> {
   const serviceChildProcess = spawn("npm", ["start"]);
 
   return new Promise((resolve, reject) => {
     let isServerReady = false;
     let isEnvReady = false;
+    let serverUrl: string | undefined;
 
     const timeoutId = setTimeout(() => {
       cleanup();
@@ -22,19 +26,25 @@ export async function startNextServer(): Promise<() => void> {
     }
 
     serviceChildProcess.stdout.on("data", (data) => {
-      const output = data.toString();
+      const output: string = data.toString();
 
-      if (output.startsWith("- ready started server on")) {
+      const serverReadyMatch = output.match(/\s+- Local:\s+(.+)/);
+
+      if (serverReadyMatch) {
         isServerReady = true;
+        serverUrl = serverReadyMatch[1];
+
+        if (!serverUrl.startsWith("http")) {
+          serverUrl = `http://${serverUrl}`;
+        }
       }
 
-      if (output.includes("Loaded env from")) {
-        isEnvReady = true;
-      }
-
-      if (isServerReady && isEnvReady) {
+      if (isServerReady) {
         clearTimeout(timeoutId);
-        resolve(cleanup);
+        resolve({
+          cleanup,
+          url: serverUrl,
+        });
       }
     });
 
@@ -48,7 +58,7 @@ export async function startNextServer(): Promise<() => void> {
 
     serviceChildProcess.on("error", (error) => {
       // eslint-disable-next-line no-console
-      console.error(`error: ${error.message}`);
+      console.error(`error:`, error);
       cleanup();
       reject(error);
     });
