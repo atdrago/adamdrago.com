@@ -1,6 +1,6 @@
 import { oneLine } from "common-tags";
 
-import type { Resume } from "types";
+import type { Resume } from "../../../types";
 
 const resumeData: Resume = {
   updatedAt: "11/10/22",

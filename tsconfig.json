@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "allowImportingTsExtensions": true,
     "baseUrl": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,7 +16,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es5",
+    "target": "esnext",
     "plugins": [
       {
         "name": "next"
@@ -25,10 +26,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
+    "**/*.mts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "scripts/utils/getPdf.mts",
-    "scripts/utils/startNextServer.mts"
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

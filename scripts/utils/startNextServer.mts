@@ -28,34 +28,23 @@ export async function startNextServer(): Promise<{
     serviceChildProcess.stdout.on("data", (data) => {
       const output: string = data.toString();
 
-      console.log(`stdout: ${output}`);
-
-      const serverReadyMatch = output.match(
-        /- ready started server on ([^\s,]+), url: (.+)/
-      );
+      const serverReadyMatch = output.match(/\s+- Local:\s+(.+)/);
 
       if (serverReadyMatch) {
-        console.log(serverReadyMatch);
         isServerReady = true;
-        serverUrl = serverReadyMatch[2];
+        serverUrl = serverReadyMatch[1];
 
         if (!serverUrl.startsWith("http")) {
           serverUrl = `http://${serverUrl}`;
         }
       }
 
-      if (output.includes("Loaded env from")) {
-        isEnvReady = true;
-      }
-
-      if (isServerReady && isEnvReady) {
+      if (isServerReady) {
         clearTimeout(timeoutId);
-        setTimeout(() => {
-          resolve({
-            cleanup,
-            url: serverUrl,
-          });
-        }, 10000); // Wait a bit to ensure server is fully ready
+        resolve({
+          cleanup,
+          url: serverUrl,
+        });
       }
     });
 
