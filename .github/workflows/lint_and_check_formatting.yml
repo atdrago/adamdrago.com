@@ -1,4 +1,6 @@
 name: Lint and check formatting
+permissions:
+  contents: read
 
 on:
   pull_request:
