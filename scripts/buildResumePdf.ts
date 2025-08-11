@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 import { writeFile } from "fs/promises";
 import { resolve } from "path";
 
-import { getPdf } from "./utils/getPdf.mts";
-import { startNextServer } from "./utils/startNextServer.mts";
+import { getPdf } from "./utils/getPdf.ts";
+import { startNextServer } from "./utils/startNextServer.ts";
 
 try {
   const { cleanup, url } = await startNextServer();

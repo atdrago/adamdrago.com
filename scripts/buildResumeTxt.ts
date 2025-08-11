@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 import { writeFile } from "fs";
 import { resolve } from "path";
 
 import resume from "../app/(lib)/data/resume.ts";
-import type { ResumeItem } from "../types";
+import type { ResumeItem } from "../types/index.ts";
 
 const getTextForItem = (item: ResumeItem, level: number) => {
   const { kind } = item;
@@ -73,6 +74,7 @@ writeFile(
       console.error(`writing resume txt failed ${err}`);
       process.exit(1);
     }
+
     console.log("writing resume txt done\n");
     process.exit(0);
   }
