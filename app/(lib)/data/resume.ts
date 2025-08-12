@@ -65,56 +65,69 @@ const resumeData: Resume = {
                 items: [
                   {
                     content: oneLine`
-                      Resolve issues with, add features to, and improve developer
-                      experience of hybrid Ember.js + Ruby on Rails /
-                      React + GraphQL internal application.
-                    `,
-                    style: "normal",
-                  },
-                  {
-                    content: oneLine`
-                      Build AWS step functions from lambdas
-                      single-concern AWS lambdas and step-functions to allow a singular
-                      "action" by a user to
-                      communication across
-                    `,
-                    style: "normal",
-                  },
-                  {
-                    content: oneLine`
-                      Contribute to projects owned by other teams as necessary
-                      in order to unblock the work of my team.
-                    `,
-                    style: "normal",
-                  },
-                  {
-                    content: oneLine`
-                      Help other teams understand and contribute to
-                    `,
-                    style: "normal",
-                  },
-                  {
-                    content: oneLine`
-                      Completely rebuild Ember.js + Ruby on Rails / React +
-                      GraphQL internal application as a statically rendered
-                      React SPA.
-                    `,
-                    style: "normal",
-                  },
-                  {
-                    content: oneLine`
-                      Progressively roll out features to groups of users using
-                      LaunchDarkly segments and workflows.
-                    `,
-                    style: "normal",
-                  },
-                  {
-                    content: oneLine`
-                      Create component library
-                    `,
+                  Details coming soon.
+                `,
                     style: "normal",
                   },
                 ],
+                // items: [
+                //   {
+                //     kind: "list",
+                //     items: [
+                //       {
+                //         content: oneLine`
+                //           Resolve issues with, add features to, and improve developer
+                //           experience of hybrid Ember.js + Ruby on Rails /
+                //           React + GraphQL internal application.
+                //         `,
+                //         style: "normal",
+                //       },
+                //       {
+                //         content: oneLine`
+                //           Build AWS step functions from lambdas
+                //           single-concern AWS lambdas and step-functions to allow a singular
+                //           "action" by a user to
+                //           communication across
+                //         `,
+                //         style: "normal",
+                //       },
+                //       {
+                //         content: oneLine`
+                //           Contribute to projects owned by other teams as necessary
+                //           in order to unblock the work of my team.
+                //         `,
+                //         style: "normal",
+                //       },
+                //       {
+                //         content: oneLine`
+                //           Help other teams understand and contribute to
+                //         `,
+                //         style: "normal",
+                //       },
+                //       {
+                //         content: oneLine`
+                //           Completely rebuild Ember.js + Ruby on Rails / React +
+                //           GraphQL internal application as a statically rendered
+                //           React SPA.
+                //         `,
+                //         style: "normal",
+                //       },
+                //       {
+                //         content: oneLine`
+                //           Progressively roll out features to groups of users using
+                //           LaunchDarkly segments and workflows.
+                //         `,
+                //         style: "normal",
+                //       },
+                //       {
+                //         content: oneLine`
+                //           Create component library
+                //         `,
+                //         style: "normal",
+                //       },
+                //     ],
+                //   },
+                // ],
               },
             ],
           },
