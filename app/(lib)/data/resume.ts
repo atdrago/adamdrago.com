@@ -106,6 +106,14 @@ const resumeData: Resume = {
                     `,
                     style: "normal",
                   },
+                  {
+                    content: oneLine`
+                      Mentor newer developers and those less experienced with
+                      front-end development on best practices and architectural
+                      decisions.
+                    `,
+                    style: "normal",
+                  },
                 ],
               },
             ],
