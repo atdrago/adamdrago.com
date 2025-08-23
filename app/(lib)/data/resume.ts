@@ -3,7 +3,7 @@ import { oneLine } from "common-tags";
 import type { Resume } from "../../../types";
 
 const resumeData: Resume = {
-  updatedAt: "11/10/22",
+  updatedAt: "08/23/25",
   sections: [
     {
       heading: "Profile",
@@ -33,7 +33,7 @@ const resumeData: Resume = {
         {
           kind: "paragraph",
           content: oneLine`
-            React, Next.js, React Query, Apollo, and CSS frameworks like
+            React, Next.js, React Query, Apollo Client, and CSS frameworks like
             vanilla-extract, tailwindcss, CSS Modules, Styled Components, and
             SCSS
           `,
@@ -45,8 +45,8 @@ const resumeData: Resume = {
         {
           kind: "paragraph",
           content: oneLine`
-            Rollup, Webpack (mostly through Create React App), Gulp, custom
-            Node.js build scripts
+            Vite, Vitest, React Testing Library, Storybook, Sentry, Datadog,
+            LaunchDarkly, and other modern tools
           `,
         },
       ],
@@ -65,69 +65,56 @@ const resumeData: Resume = {
                 items: [
                   {
                     content: oneLine`
-                  Details coming soon.
-                `,
+                      Resolve issues with, add features to, and improve developer
+                      experience of legacy hybrid Ember.js + Ruby on Rails / React +
+                      GraphQL internal monolith application.
+                    `,
+                    style: "normal",
+                  },
+                  {
+                    content: oneLine`
+                      Create modernized multi-tenant monorepo of component
+                      libraries based off of a single core design system with
+                      companion SPA to replace the monolith. Each library was
+                      optionally published to NPM and then imported into both
+                      the legacy monolith (for quicker rollout to users of the
+                      legacy site), and into the modernized SPA, for when the
+                      entire route could be migrated.
+                    `,
+                    style: "normal",
+                  },
+                  {
+                    content: oneLine`
+                      Modernize Ember.js components with React + GraphQL and
+                      progressively roll them out to users with feature flags.
+                    `,
+                    style: "normal",
+                  },
+
+                  {
+                    content: oneLine`
+                      Build single-concern AWS lambdas and compose them with
+                      step functions, allowing a singular "action" by a user to
+                      communicate across services.
+                    `,
+                    style: "normal",
+                  },
+                  {
+                    content: oneLine`
+                      Contribute to projects owned by other teams as necessary
+                      in order to unblock the work of my team.
+                    `,
+                    style: "normal",
+                  },
+                  {
+                    content: oneLine`
+                      Mentor newer developers and those less experienced with
+                      front-end development on best practices and architectural
+                      decisions.
+                    `,
                     style: "normal",
                   },
                 ],
-                // items: [
-                //   {
-                //     kind: "list",
-                //     items: [
-                //       {
-                //         content: oneLine`
-                //           Resolve issues with, add features to, and improve developer
-                //           experience of hybrid Ember.js + Ruby on Rails /
-                //           React + GraphQL internal application.
-                //         `,
-                //         style: "normal",
-                //       },
-                //       {
-                //         content: oneLine`
-                //           Build AWS step functions from lambdas
-                //           single-concern AWS lambdas and step-functions to allow a singular
-                //           "action" by a user to
-                //           communication across
-                //         `,
-                //         style: "normal",
-                //       },
-                //       {
-                //         content: oneLine`
-                //           Contribute to projects owned by other teams as necessary
-                //           in order to unblock the work of my team.
-                //         `,
-                //         style: "normal",
-                //       },
-                //       {
-                //         content: oneLine`
-                //           Help other teams understand and contribute to
-                //         `,
-                //         style: "normal",
-                //       },
-                //       {
-                //         content: oneLine`
-                //           Completely rebuild Ember.js + Ruby on Rails / React +
-                //           GraphQL internal application as a statically rendered
-                //           React SPA.
-                //         `,
-                //         style: "normal",
-                //       },
-                //       {
-                //         content: oneLine`
-                //           Progressively roll out features to groups of users using
-                //           LaunchDarkly segments and workflows.
-                //         `,
-                //         style: "normal",
-                //       },
-                //       {
-                //         content: oneLine`
-                //           Create component library
-                //         `,
-                //         style: "normal",
-                //       },
-                //     ],
-                //   },
-                // ],
               },
             ],
           },
