@@ -38,7 +38,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint": "8.43.0",
     "import-sort-style-atdrago": "^0.1.7",
-    "postcss": "^8.4.21",
+    "postcss": "^8.5.6",
     "prettier-plugin-import-sort": "^0.0.7",
     "prettier": "3.6.2",
     "puppeteer-core": "^24.16.0",
