@@ -108,9 +108,9 @@ const resumeData: Resume = {
                   },
                   {
                     content: oneLine`
-                      Mentor newer developers and those less experienced with
-                      front-end development on best practices and architectural
-                      decisions.
+                      Mentor early-career developers and those less experienced
+                      with front-end development on best practices and
+                      architectural decisions.
                     `,
                     style: "normal",
                   },
