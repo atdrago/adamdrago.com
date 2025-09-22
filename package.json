@@ -41,7 +41,7 @@
     "postcss": "^8.4.21",
     "prettier-plugin-import-sort": "^0.0.7",
     "prettier": "3.6.2",
-    "puppeteer-core": "^24.16.0",
+    "puppeteer-core": "^24.22.0",
     "tailwindcss": "^4.1.11",
     "typescript": "5.9.2"
   },
