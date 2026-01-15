@@ -40,7 +40,7 @@ const resumeData: Resume = {
         },
         {
           kind: "paragraph",
-          content: "Git, GitHub, VSCode",
+          content: "Git, GitHub, Cursor, VSCode",
         },
         {
           kind: "paragraph",
