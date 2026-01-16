@@ -1,7 +1,26 @@
 import "app/(lib)/styles/globals.css";
 
+import type { Metadata, Viewport } from "next";
+
 import { Backgrounds } from "app/(lib)/components/Backgrounds";
 import { Header } from "app/(lib)/components/Header";
+
+export const metadata: Metadata = {
+  title: "Adam Drago",
+  description: "A site about Adam Drago",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (

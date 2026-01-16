@@ -27,7 +27,7 @@ export async function startNextServer(): Promise<{
     serviceChildProcess.stdout.on("data", (data) => {
       const output: string = data.toString();
 
-      const serverReadyMatch = output.match(/\s+- Local:\s+(.+)/);
+      const serverReadyMatch = output.match(/- Local:\s+(.+)/);
 
       if (serverReadyMatch) {
         isServerReady = true;
