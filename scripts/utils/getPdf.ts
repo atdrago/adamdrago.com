@@ -6,8 +6,7 @@
  */
 
 import chrome from "@sparticuz/chromium";
-import puppeteer from "puppeteer-core";
-import type { LaunchOptions } from "puppeteer-core";
+import puppeteer, { type LaunchOptions } from "puppeteer-core";
 
 // Path to chrome executable on different platforms
 const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
