@@ -123,7 +123,7 @@ const resumeData: Resume = {
           kind: "section",
           content: {
             heading: "Head of Development, Live Better PHL",
-            subheading: "Remote — 6/2022 to 9/2022",
+            subheading: "Remote — Start-up — 6/2022 to 9/2022",
             items: [
               {
                 kind: "list",
@@ -164,7 +164,7 @@ const resumeData: Resume = {
           kind: "section",
           content: {
             heading: "Staff Software Architect, Schedule Engine / HomeX",
-            subheading: "Remote — 12/2017 to 11/2021",
+            subheading: "Remote — Start-up — 12/2017 to 11/2021",
             items: [
               {
                 kind: "list",
@@ -251,7 +251,7 @@ const resumeData: Resume = {
           kind: "section",
           content: {
             heading: "Front-end Lead (Contractor), BankMobile",
-            subheading: "Remote — 5/2017 to 12/2017",
+            subheading: "Remote — Start-up  — 5/2017 to 12/2017",
             items: [
               {
                 kind: "list",
