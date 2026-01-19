@@ -13,8 +13,7 @@
 /out/
 
 # build artifacts
-/public/adam-drago-resume.pdf
-/public/adam-drago-resume.txt
+/public/adam-drago-resume.*
 
 # misc
 .DS_Store
