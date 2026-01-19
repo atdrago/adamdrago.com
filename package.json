@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "rm -rf .next && next dev",
-    "build": "rm -rf .next && next build && npm run build-resume-pdf && npm run build-resume-txt",
+    "build": "rm -rf .next && next build && npm run build-resume-txt && npm run build-resume-md && npm run build-resume-pdf",
     "start": "next start",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint --fix .",
     "format": "npx prettier --write .",
     "format:check": "npx prettier --check .",
     "build-resume-pdf": "node ./scripts/buildResumePdf.ts",
-    "build-resume-txt": "node ./scripts/buildResumeTxt.ts"
+    "build-resume-txt": "node ./scripts/buildResumeTxt.ts",
+    "build-resume-md": "node ./scripts/buildResumeMd.ts"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -27,7 +28,7 @@
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
     "@next/eslint-plugin-next": "^16.1.3",
-    "@sparticuz/chromium": "^138.0.2",
+    "@sparticuz/chromium": "^143.0.4",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.12",
     "@tailwindcss/typography": "^0.5.16",
@@ -46,7 +47,7 @@
     "postcss": "^8.4.21",
     "prettier": "3.6.2",
     "prettier-plugin-import-sort": "^0.0.7",
-    "puppeteer-core": "^24.16.0",
+    "puppeteer-core": "^24.35.0",
     "tailwindcss": "^4.1.11",
     "typescript": "5.9.2",
     "typescript-eslint": "^8.53.0"
