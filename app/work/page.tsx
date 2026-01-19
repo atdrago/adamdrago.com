@@ -117,11 +117,11 @@ export default function WorkPage() {
         <div className="flex items-start gap-6">
           <Link
             className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
-            download="adam-drago-resume.txt"
+            download="adam-drago-resume.md"
             target="_blank"
-            href={`/adam-drago-resume.txt`}
+            href={`/adam-drago-resume.md`}
           >
-            <FileArrowDownIcon size={32} /> TXT
+            <FileArrowDownIcon size={32} /> MD
           </Link>
           <Link
             className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
@@ -133,11 +133,11 @@ export default function WorkPage() {
           </Link>
           <Link
             className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
-            download="adam-drago-resume.md"
+            download="adam-drago-resume.txt"
             target="_blank"
-            href={`/adam-drago-resume.md`}
+            href={`/adam-drago-resume.txt`}
           >
-            <FileArrowDownIcon size={32} /> MD
+            <FileArrowDownIcon size={32} /> TXT
           </Link>
         </div>
       </section>
