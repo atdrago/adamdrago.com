@@ -19,14 +19,14 @@ export default function WorkPage() {
           "
         >
           The following is my resume, updated as of <b>{updatedAt}</b>. It is
-          also available to download as an{" "}
-          <Link
+          also available to download as an MD{" "}
+          {/* <Link
             download="adam-drago-resume.md"
             target="_blank"
             href={`/adam-drago-resume.md`}
           >
             MD
-          </Link>
+          </Link> */}
           ,{" "}
           <Link
             download="adam-drago-resume.pdf"
