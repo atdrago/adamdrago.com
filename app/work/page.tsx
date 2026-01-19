@@ -25,7 +25,7 @@ export default function WorkPage() {
             target="_blank"
             href={`/adam-drago-resume.pdf`}
           >
-            download as a PDF
+            download as a PdddDF
           </Link>{" "}
           or{" "}
           <Link
