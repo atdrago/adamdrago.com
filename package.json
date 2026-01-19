@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "rm -rf .next && next dev",
-    "build": "rm -rf .next && next build && npm run build-resume-pdf && npm run build-resume-txt && npm run build-resume-md",
+    "build": "rm -rf .next && next build && npm run build-resume-txt && npm run build-resume-md && npm run build-resume-pdf",
     "start": "next start",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint --fix .",
