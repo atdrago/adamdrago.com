@@ -3,7 +3,7 @@ import { oneLine } from "common-tags";
 import type { Resume } from "../../../types";
 
 const resumeData: Resume = {
-  updatedAt: "01/16/26",
+  updatedAt: "01/19/26",
   sections: [
     {
       heading: "Profile",
@@ -143,8 +143,8 @@ const resumeData: Resume = {
                   {
                     content: oneLine`
                       Rewrite existing food ordering site using
-                      Next.js and TypeScript, with static pages for each
-                      restaurant. (livebetterphl.com)
+                      Next.js and TypeScript, with static, mobile-responsive
+                      pages for each restaurant. (livebetterphl.com, now defunct)
                     `,
                     style: "normal",
                   },
@@ -187,8 +187,9 @@ const resumeData: Resume = {
                   },
                   {
                     content: oneLine`
-                      Create front-end of white-labeled scheduling widget, with
-                      several theming options for changing colors, copy, and
+                      Work closely with design to create front-end of
+                      white-labeled scheduling widget, with several theming
+                      options for changing colors, copy, and
                       preferences. Written in TypeScript, built with React and
                       GraphQL, and styled using Styled Components. Eventually
                       used by hundreds of home service providers across the
