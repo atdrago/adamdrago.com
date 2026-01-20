@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { writeFile } from "fs";
+import { writeFile } from "fs/promises";
 import { resolve } from "path";
 
 import resume from "../app/(lib)/data/resume.ts";
@@ -72,27 +72,23 @@ const result =
     )
     .join("");
 
-const mdPath = resolve(process.cwd(), "public", "adam-drago-resume.md");
-const mdTxtPath = resolve(process.cwd(), "public", "adam-drago-resume.md.txt");
+try {
+  await Promise.all([
+    writeFile(
+      // .MD
+      resolve(process.cwd(), "public", "adam-drago-resume.md"),
+      result,
+    ),
+    writeFile(
+      // .MD.TXT
+      resolve(process.cwd(), "public", "adam-drago-resume.md.txt"),
+      result,
+    ),
+  ]);
 
-let filesWritten = 0;
-const totalFiles = 2;
-
-const onFileWritten = (err: unknown, filename: string) => {
-  if (err) {
-    console.error(`writing ${filename} failed ${err}`);
-    process.exit(1);
-  }
-
-  filesWritten++;
-
-  if (filesWritten === totalFiles) {
-    console.log("writing resume md files done\n");
-    process.exit(0);
-  }
-};
-
-writeFile(mdPath, result, (err: unknown) => onFileWritten(err, "resume.md"));
-writeFile(mdTxtPath, result, (err: unknown) =>
-  onFileWritten(err, "resume.md.txt"),
-);
+  console.log("writing resume md files done\n");
+  process.exit(0);
+} catch (err) {
+  console.error(`writing resume md files failed ${err}`);
+  process.exit(1);
+}
