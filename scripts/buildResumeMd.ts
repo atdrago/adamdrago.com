@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { writeFile } from "fs";
+import { writeFile } from "fs/promises";
 import { resolve } from "path";
 
 import resume from "../app/(lib)/data/resume.ts";
@@ -72,16 +72,23 @@ const result =
     )
     .join("");
 
-writeFile(
-  resolve(process.cwd(), "public", "adam-drago-resume.md"),
-  result,
-  (err: unknown) => {
-    if (err) {
-      console.error(`writing resume md failed ${err}`);
-      process.exit(1);
-    }
+try {
+  await Promise.all([
+    writeFile(
+      // .MD
+      resolve(process.cwd(), "public", "adam-drago-resume.md"),
+      result,
+    ),
+    writeFile(
+      // .MD.TXT
+      resolve(process.cwd(), "public", "adam-drago-resume.md.txt"),
+      result,
+    ),
+  ]);
 
-    console.log("writing resume md done\n");
-    process.exit(0);
-  },
-);
+  console.log("writing resume md files done\n");
+  process.exit(0);
+} catch (err) {
+  console.error(`writing resume md files failed ${err}`);
+  process.exit(1);
+}
