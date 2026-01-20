@@ -19,13 +19,21 @@ export default function WorkPage() {
           "
         >
           The following is my resume, updated as of <b>{updatedAt}</b>. It is
-          also available to download as an{" "}
+          also available to download in any of the following formats:{" "}
           <Link
             download="adam-drago-resume.md"
             target="_blank"
             href={`/adam-drago-resume.md`}
           >
             MD
+          </Link>
+          ,{" "}
+          <Link
+            download="adam-drago-resume.md.txt"
+            target="_blank"
+            href={`/adam-drago-resume.md.txt`}
+          >
+            MD.TXT
           </Link>
           ,{" "}
           <Link
@@ -42,8 +50,8 @@ export default function WorkPage() {
             href={`/adam-drago-resume.txt`}
           >
             TXT
-          </Link>{" "}
-          file if that is more convenient.
+          </Link>
+          .
         </p>
       </aside>
       {resumeData.sections.map(({ heading, items }, sectionIndex) => {
@@ -122,6 +130,14 @@ export default function WorkPage() {
             href={`/adam-drago-resume.md`}
           >
             <FileArrowDownIcon size={32} /> MD
+          </Link>
+          <Link
+            className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"
+            download="adam-drago-resume.md.txt"
+            target="_blank"
+            href={`/adam-drago-resume.md.txt`}
+          >
+            <FileArrowDownIcon size={32} /> MD.TXT
           </Link>
           <Link
             className="rounded-lg p-3 pr-4 bg-sky-500 text-white font-bold no-underline flex gap-2 items-center"

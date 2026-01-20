@@ -72,16 +72,27 @@ const result =
     )
     .join("");
 
-writeFile(
-  resolve(process.cwd(), "public", "adam-drago-resume.md"),
-  result,
-  (err: unknown) => {
-    if (err) {
-      console.error(`writing resume md failed ${err}`);
-      process.exit(1);
-    }
+const mdPath = resolve(process.cwd(), "public", "adam-drago-resume.md");
+const mdTxtPath = resolve(process.cwd(), "public", "adam-drago-resume.md.txt");
 
-    console.log("writing resume md done\n");
+let filesWritten = 0;
+const totalFiles = 2;
+
+const onFileWritten = (err: unknown, filename: string) => {
+  if (err) {
+    console.error(`writing ${filename} failed ${err}`);
+    process.exit(1);
+  }
+
+  filesWritten++;
+
+  if (filesWritten === totalFiles) {
+    console.log("writing resume md files done\n");
     process.exit(0);
-  },
+  }
+};
+
+writeFile(mdPath, result, (err: unknown) => onFileWritten(err, "resume.md"));
+writeFile(mdTxtPath, result, (err: unknown) =>
+  onFileWritten(err, "resume.md.txt"),
 );
