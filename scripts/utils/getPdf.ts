@@ -5,8 +5,21 @@
  * Also, @see https://github.com/berstend/puppeteer-extra/issues/93#issuecomment-712364816
  */
 
+import { access, cp, mkdir, readdir } from "fs/promises";
+import { join } from "path";
+
 import chrome from "@sparticuz/chromium";
 import puppeteer, { type LaunchOptions } from "puppeteer-core";
+
+async function exists(path: string): Promise<boolean> {
+  try {
+    await access(path);
+
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 // Path to chrome executable on different platforms
 const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
@@ -52,6 +65,43 @@ export const getPdf = async (url: string, verbose = false) => {
   // closing the browser. See:
   // https://github.com/puppeteer/puppeteer/issues/7922#issuecomment-1549052725
   chrome.setGraphicsMode = false;
+
+  // In Vercel/CI, fonts must be in specific directories for chromium to find them.
+  // The fonts.conf in @sparticuz/chromium looks for fonts in:
+  // /var/task/.fonts, /var/task/fonts, /opt/fonts, /tmp/fonts
+  // During Vercel builds, the working directory is /vercel/path0/, not /var/task/.
+  // So we copy fonts to /tmp/fonts which is always accessible.
+  // See: https://github.com/Sparticuz/chromium/issues/333
+  if (process.env.CI || process.env.VERCEL) {
+    const fontsSource = join(process.cwd(), "fonts");
+    const fontsDest = "/tmp/fonts";
+
+    const sourceExists = await exists(fontsSource);
+    const sourceHasFiles =
+      sourceExists && (await readdir(fontsSource)).length > 0;
+
+    if (sourceHasFiles) {
+      log(verbose, `Copying fonts from ${fontsSource} to ${fontsDest}...`);
+
+      if (!(await exists(fontsDest))) {
+        log(
+          verbose,
+          `Font destination ${fontsDest} does not exist, creating...`,
+        );
+        await mkdir(fontsDest, { recursive: true });
+      } else {
+        log(verbose, `Font destination ${fontsDest} already exists.`);
+      }
+
+      await cp(fontsSource, fontsDest, { recursive: true });
+      log(verbose, "Fonts copied successfully.");
+    } else {
+      log(
+        verbose,
+        `No fonts folder found at ${fontsSource}, fonts will not be copied.`,
+      );
+    }
+  }
 
   // Start headless chrome instance
   log(verbose, "Starting chrome...");
