@@ -28,13 +28,22 @@ const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
   darwin: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
 };
 
+const cdnFontsPath =
+  "https://rawcdn.githack.com/atdrago/adamdrago.com/08010147dca5213fe14ccf62c7e3369702191fca/fonts";
+
+const fonts = [
+  "Courier New.ttf",
+  "Courier New Bold.ttf",
+  "Courier New Italic.ttf",
+];
+
 const getOptions = async (): Promise<LaunchOptions> => {
   if (process.env.CI || process.env.VERCEL) {
     // In CI, use the path of chrome-aws-lambda and its args
     return {
       args: chrome.args,
       executablePath: await chrome.executablePath(),
-      headless: "shell",
+      headless: true,
     };
   }
 
@@ -56,6 +65,14 @@ function log(shouldLog: boolean, ...args: any) {
 
 export const getPdf = async (url: string, verbose = false) => {
   log(true, "\nBuilding PDF...");
+
+  // Load the fonts that are used on the site. This must be done before
+  // puppeteer.launch(...) is called below.
+  log(verbose, "Loading fonts...");
+
+  for (const font of fonts) {
+    await chrome.font(`${cdnFontsPath}/${encodeURIComponent(font)}`);
+  }
 
   // Fixes issue where calling `chrome.close()` hangs. See:
   // https://github.com/Sparticuz/chromium/issues/85#issuecomment-1527692751
