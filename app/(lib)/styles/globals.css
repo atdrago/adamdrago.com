@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
 
 @plugin '@tailwindcss/typography';
@@ -7,8 +6,7 @@
 @theme {
   --font-*: initial;
   --font-serif:
-    Courier Prime, Courier New, Courier, Lucida Sans Typewriter,
-    Lucida Typewriter, monospace;
+    Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
 }
 
 /*
