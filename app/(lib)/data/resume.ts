@@ -57,7 +57,7 @@ const resumeData: Resume = {
         {
           kind: "section",
           content: {
-            heading: "Lead Software Engineer, Block, Inc.",
+            heading: "Senior Software Engineer, L6, Tech Lead @ Block, Inc.",
             subheading: "Remote — 11/2022 to Present",
             items: [
               {
@@ -122,7 +122,7 @@ const resumeData: Resume = {
         {
           kind: "section",
           content: {
-            heading: "Head of Development, Live Better PHL",
+            heading: "Head of Development @ Live Better PHL",
             subheading: "Remote — Start-up — 6/2022 to 9/2022",
             items: [
               {
@@ -163,7 +163,7 @@ const resumeData: Resume = {
         {
           kind: "section",
           content: {
-            heading: "Staff Software Architect, Schedule Engine / HomeX",
+            heading: "Staff Software Architect @ Schedule Engine / HomeX",
             subheading: "Remote — Start-up — 12/2017 to 11/2021",
             items: [
               {
@@ -251,7 +251,7 @@ const resumeData: Resume = {
         {
           kind: "section",
           content: {
-            heading: "Front-end Lead (Contractor), BankMobile",
+            heading: "Front-end Lead (Contractor) @ BankMobile",
             subheading: "Remote — Start-up  — 5/2017 to 12/2017",
             items: [
               {
@@ -286,7 +286,7 @@ const resumeData: Resume = {
         {
           kind: "section",
           content: {
-            heading: "UI Engineer, Apple, iTunes",
+            heading: "UI Engineer @ Apple, iTunes",
             subheading: "Cupertino, CA — 1/2016 to 5/2017",
             items: [
               {
@@ -336,7 +336,7 @@ const resumeData: Resume = {
         {
           kind: "section",
           content: {
-            heading: "Front-end Web Developer, Apple, Online Store",
+            heading: "Front-end Web Developer @ Apple, Online Store",
             subheading: "Cupertino, CA — 8/2014 to 1/2016",
             items: [
               {
