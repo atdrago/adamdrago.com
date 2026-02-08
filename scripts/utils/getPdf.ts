@@ -1,25 +1,17 @@
 /**
  * PDF generation utility using Puppeteer and Chromium.
  *
- * Uses @sparticuz/chromium-min in CI/Vercel environments, which downloads
- * the Chromium binary from a hosted URL at runtime (smaller package size).
- * Uses local Chrome installation for local development.
- *
- * Pattern adapted from:
- * @see https://github.com/gabenunez/puppeteer-on-vercel/blob/main/app/api/screenshot/route.ts
+ * Uses @sparticuz/chromium in CI/Vercel build environments (full package with
+ * bundled binary). Uses local Chrome installation for local development.
  *
  * NOTE: This is used as a BUILD SCRIPT (via scripts/buildResumePdf.ts),
- * not as an API route. The PDF is generated at build time.
+ * not as an API route. The PDF is generated at build time. For runtime API
+ * routes, consider using @sparticuz/chromium-min with a hosted binary instead.
+ *
+ * @see https://github.com/Sparticuz/chromium
  */
 
 import type { Browser, LaunchOptions } from "puppeteer-core";
-
-// URL to the Chromium binary package hosted in /public
-// Download the appropriate version from https://github.com/Sparticuz/chromium/releases
-// and place it in the /public directory as chromium-pack.tar
-const CHROMIUM_PACK_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/chromium-pack.tar`
-  : "https://github.com/AdrianMrn/chromium-packed/raw/refs/heads/main/chromium-v143.0.0-pack.tar";
 
 // Path to chrome executable on different platforms (for local development)
 const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
@@ -27,44 +19,6 @@ const chromeExecutables: Partial<Record<typeof process.platform, string>> = {
   win32: "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
   darwin: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
 };
-
-// Cache the Chromium executable path to avoid re-downloading on subsequent calls
-// Note that in CI/Vercel, this won't actually matter much since the environment
-// is ephemeral, but this allows the same code to be used as a route if I ever
-// want to add that in the future.
-let cachedExecutablePath: string | null = null;
-let downloadPromise: Promise<string> | null = null;
-
-/**
- * Downloads and caches the Chromium executable path.
- * Uses a download promise to prevent concurrent downloads.
- */
-async function getChromiumPath(): Promise<string> {
-  // Return cached path if available
-  if (cachedExecutablePath) return cachedExecutablePath;
-
-  // Prevent concurrent downloads by reusing the same promise
-  if (!downloadPromise) {
-    const chromium = (await import("@sparticuz/chromium-min")).default;
-    downloadPromise = chromium
-      .executablePath(CHROMIUM_PACK_URL)
-      .then((path: string) => {
-        cachedExecutablePath = path;
-        // eslint-disable-next-line no-console
-        console.log("Chromium path resolved:", path);
-
-        return path;
-      })
-      .catch((error: unknown) => {
-        // eslint-disable-next-line no-console
-        console.error("Failed to get Chromium path:", error);
-        downloadPromise = null; // Reset on error to allow retry
-        throw error;
-      });
-  }
-
-  return downloadPromise;
-}
 
 function log(shouldLog: boolean, ...args: unknown[]) {
   if (shouldLog) {
@@ -81,19 +35,22 @@ export const getPdf = async (url: string, verbose = false) => {
   let browser: Browser;
 
   if (isCI) {
-    // CI/Vercel: Use puppeteer-core with chromium-min (downloads binary from URL)
-    log(verbose, "CI environment detected, using chromium-min...");
-    const chromium = (await import("@sparticuz/chromium-min")).default;
+    // CI/Vercel build: Use @sparticuz/chromium directly (full package)
+    log(verbose, "CI environment detected, using @sparticuz/chromium...");
+    const chromium = (await import("@sparticuz/chromium")).default;
     const puppeteer = (await import("puppeteer-core")).default;
-    const executablePath = await getChromiumPath();
+
+    // Fixes issue where calling `browser.close()` hangs. See:
+    // https://github.com/Sparticuz/chromium/issues/85#issuecomment-1527692751
+    chromium.setGraphicsMode = false;
 
     const launchOptions: LaunchOptions = {
       args: chromium.args,
-      executablePath,
+      executablePath: await chromium.executablePath(),
       headless: true,
     };
 
-    log(verbose, "Starting chrome with executable path:", executablePath);
+    log(verbose, "Starting chrome...");
     browser = await puppeteer.launch(launchOptions);
   } else {
     // Local development: Use puppeteer-core with local Chrome installation
