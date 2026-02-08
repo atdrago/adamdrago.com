@@ -14,6 +14,7 @@
 
 # build artifacts
 /public/adam-drago-resume.*
+/public/chromium-pack.tar
 
 # misc
 .DS_Store
