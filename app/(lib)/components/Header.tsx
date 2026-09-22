@@ -7,6 +7,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { GitHubLogo } from "app/(lib)/components/GitHubLogo";
 import { HeaderLink } from "app/(lib)/components/HeaderLink";
+import { MastodonLogo } from "app/(lib)/components/MastodonLogo";
 
 const routes = [
   {
@@ -37,7 +38,7 @@ export const Header = () => {
             </li>
           ))}
         </ul>
-        <ul className="flex print:flex-col gap-2 mt-1">
+        <ul className="flex print:flex-col gap-4 mt-1">
           <li className="hidden print:inline">
             <Link
               className="
@@ -63,9 +64,26 @@ export const Header = () => {
               "
               rel="noreferrer noopener"
               href="https://github.com/atdrago"
+              aria-label="GitHub"
             >
               <GitHubLogo className="h-7 w-7 print:h-5 print:w-5" />
               <span className="hidden print:inline">github.com/atdrago</span>
+            </Link>
+          </li>
+          <li className="print:hidden">
+            <Link
+              target="_blank"
+              className="
+                flex gap-3
+                text-stone-600 dark:text-stone-300
+                items-center
+                text-sm
+              "
+              rel="me noreferrer noopener"
+              href="https://podcastindex.social/@atdrago"
+              aria-label="Mastodon"
+            >
+              <MastodonLogo className="h-7 w-7" />
             </Link>
           </li>
           <li className="hidden print:inline">
